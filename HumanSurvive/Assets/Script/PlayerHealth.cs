@@ -5,7 +5,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField] float currentHp = 100f;
     [SerializeField] float defaultHp = 0;
     [SerializeField] LayerMask enemyLayer;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
