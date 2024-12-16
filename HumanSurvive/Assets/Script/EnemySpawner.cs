@@ -3,22 +3,32 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] float xMax;
-    [SerializeField] float yMax;
-    [SerializeField] float xMin;
-    [SerializeField] float yMin;
     [SerializeField] float spawnSpeed;
 
-    private float first;
+    string[] enemyName = {"Bat"};
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        first = 8f;
+        StartCoroutine(GenTimer());
     }
 
-    private IEnumerator EnemySpawn() {
-        float tmp = Random.value > 0.5f ? 1f : -1f;
-        float xPos = tmp * first;
-        yield return new WaitForSeconds(spawnSpeed);
+    private IEnumerator GenTimer() {
+        while (true) {
+            EnemySpawn();
+            yield return new WaitForSeconds(spawnSpeed);
+        }
+    }
+
+    private void EnemySpawn() {
+        int randomIndex = Random.Range(0, enemyName.Length);
+        string prefabName = enemyName[randomIndex];
+        
+        GameObject enemy = ObjectPoolManager.Instance.GetPooledObject(prefabName);
+        if(enemy != null) {
+            Vector2 randomPos = new Vector2(10f, 5f);
+
+            enemy.GetComponent<EnemyManager>().Init(randomPos);
+        }
     }
 }

@@ -3,14 +3,14 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private Transform player;
     [SerializeField] private float stoppingDistance;
 
     private Rigidbody2D rigidbody2D;
+    private Transform player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        player = GameManager.Instance.player.transform;
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
