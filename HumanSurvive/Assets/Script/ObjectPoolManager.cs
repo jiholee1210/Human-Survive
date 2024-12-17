@@ -6,10 +6,10 @@ public class ObjectPoolManager : MonoBehaviour
 {
     public static ObjectPoolManager Instance { get; private set; }
     
-    [SerializeField] GameObject[] enemy;
+    [SerializeField] GameObject[] prefabs;
 
     private int size = 10;
-    private Dictionary<string, IObjectPool<GameObject>> poolDic = new Dictionary<string, IObjectPool<GameObject>>();
+    private Dictionary<int, IObjectPool<GameObject>> poolDic = new Dictionary<int, IObjectPool<GameObject>>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -19,26 +19,34 @@ public class ObjectPoolManager : MonoBehaviour
     }
 
     private void Init() {
-        for (int i = 0; i < enemy.Length; i++) {
-            string prefabName = enemy[i].name;
+        for (int i = 0; i < prefabs.Length; i++) {
+            int currentIndex = i;
             IObjectPool<GameObject> pool = new ObjectPool<GameObject>(
-                () => CreatePooledItem(prefabName), OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject, true, size, size
+                () => CreatePooledItem(currentIndex), OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject, true, size, size
             );
-            poolDic.Add(prefabName, pool);
+            poolDic.Add(currentIndex, pool);
 
-            for (int j = 0; j < size; j++) {
-                GameObject pooledObject = CreatePooledItem(prefabName);
+            /*for (int j = 0; j < size; j++) {
+                GameObject pooledObject = CreatePooledItem(currentIndex);
                 pool.Release(pooledObject);
-            }
+            }*/
         }
     }
 
-    public GameObject CreatePooledItem(string name) {
-        GameObject prefab = System.Array.Find(enemy, obj => obj.name == name);
+    public GameObject CreatePooledItem(int id) {
+        Debug.Log("CreatePoolItem : " + id);
+        GameObject prefab = prefabs[id];
 
         if (prefab != null) {
             GameObject poolGo = Instantiate(prefab);
-            poolGo.GetComponent<EnemyManager>().pool = poolDic[name];
+            switch (id) {
+                case 0:
+                    poolGo.GetComponent<EnemyManager>().pool = poolDic[id];
+                    break;
+                case 1:
+                    poolGo.GetComponent<IWeapon>().pool = poolDic[id];
+                    break;
+            }
             return poolGo;
         }
         return null;
@@ -56,9 +64,9 @@ public class ObjectPoolManager : MonoBehaviour
         Destroy(poolGo);
     }
 
-    public GameObject GetPooledObject(string name) {
-        if(poolDic.ContainsKey(name)) {
-            IObjectPool<GameObject> pool = poolDic[name];
+    public GameObject GetPooledObject(int id) {
+        if(poolDic.ContainsKey(id)) {
+            IObjectPool<GameObject> pool = poolDic[id];
             return pool.Get();
         }
         return null;

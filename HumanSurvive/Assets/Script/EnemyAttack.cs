@@ -18,4 +18,8 @@ public class EnemyAttack : MonoBehaviour
     public float GetDamage() {
         return damage;
     }
+
+    public void SetDamage(float dmg) {
+        damage = dmg;
+    }
 }

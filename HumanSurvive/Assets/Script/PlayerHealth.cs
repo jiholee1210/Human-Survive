@@ -24,7 +24,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (((1 << other.gameObject.layer) & enemyLayer) != 0) {
-            Debug.Log("적과 충돌");
             EnemyAttack enemyAttack = other.gameObject.GetComponent<EnemyAttack>();
             OnHit(enemyAttack.GetDamage());
         }
