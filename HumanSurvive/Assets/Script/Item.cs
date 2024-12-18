@@ -1,3 +1,4 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public enum ItemType {
@@ -18,6 +19,7 @@ public class Item : ScriptableObject
     [SerializeField] public int prefabId;
     [SerializeField] public ItemType itemType;
     [SerializeField] public string itemName;
+    [SerializeField] public string itemDesc;
     [SerializeField] public Sprite itemSprite;
     [SerializeField] public RuntimeAnimatorController animCon;
     [SerializeField] public bool canOverlap;

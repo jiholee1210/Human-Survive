@@ -16,7 +16,8 @@ MonoBehaviour:
   prefabId: 1
   itemType: 1
   itemName: "\uD30C\uC774\uC5B4\uBCFC"
-  itemSprite: {fileID: -1185504469975962154, guid: 9517778feba6c3c4ea59eafdafb57383, type: 3}
+  itemDesc: "\uBD88\uC744 \uBFDC\uC5B4 \uC0C1\uB300\uB97C \uACF5\uACA9"
+  itemSprite: {fileID: 5353841184698615464, guid: da30d1d1f70f12b49a39f50fefe8d718, type: 3}
   animCon: {fileID: 9100000, guid: 3e013452a4940d843a1c88575491926e, type: 2}
   canOverlap: 0
   baseDamage: 5
