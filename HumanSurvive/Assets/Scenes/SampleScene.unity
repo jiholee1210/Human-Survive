@@ -4481,7 +4481,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27158f2d83c80ba41bcbd41dfe8e1318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1176538139}
+  player: {fileID: 0}
+  killCountText: {fileID: 304915570}
+  timeText: {fileID: 1288426171}
+  levelText: {fileID: 1045329554}
+  expBar: {fileID: 1176454454}
+  itemSelect: {fileID: 412119040}
+  killCount: 0
 --- !u!4 &101203609
 Transform:
   m_ObjectHideFlags: 0
@@ -5085,6 +5091,8 @@ MonoBehaviour:
   - {fileID: 926802501}
   - {fileID: 1878692543}
   - {fileID: 1320812948}
+  reRollBtn: {fileID: 417504592}
+  passBtn: {fileID: 2097728246}
   playerInventory: {fileID: 1176538148}
 --- !u!1 &417504590
 GameObject:
@@ -6817,7 +6825,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 106, y: 57}
+  m_AnchoredPosition: {x: 96, y: 57}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1045329554
@@ -6874,7 +6882,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -7088,6 +7096,7 @@ GameObject:
   - component: {fileID: 1176538140}
   - component: {fileID: 1176538146}
   - component: {fileID: 1176538148}
+  - component: {fileID: 1176538149}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -7328,6 +7337,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065f3c9b096ce13458456dc8bcb12d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1176538149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176538139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be3e6232bf1af54998d31798b717929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  curExp: 0
+  maxExp: 0
 --- !u!1 &1184118132
 GameObject:
   m_ObjectHideFlags: 0

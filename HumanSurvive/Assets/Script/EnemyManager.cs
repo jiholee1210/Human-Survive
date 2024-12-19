@@ -19,6 +19,8 @@ public class EnemyManager : MonoBehaviour
     private EnemyAttack enemyAttack;
     private EnemyHealth enemyHealth;
 
+    private GameObject player;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -59,6 +61,7 @@ public class EnemyManager : MonoBehaviour
         enemyAttack = GetComponent<EnemyAttack>();
         enemyHealth = GetComponent<EnemyHealth>();
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        player = GameManager.Instance.player;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -67,6 +70,8 @@ public class EnemyManager : MonoBehaviour
             enemyHealth.OnHit(weapon.GetDamage());
             if(enemyHealth.GetHealth() <= 0) {
                 Die();
+                GameManager.Instance.SetKillCount(1);
+                GameManager.Instance.SetPlayerExp(2);
             }
         }
     }

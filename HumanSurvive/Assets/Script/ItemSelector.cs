@@ -6,6 +6,8 @@ public class ItemSelector : MonoBehaviour
 {
     [SerializeField] private Item[] items;
     [SerializeField] private Button[] itemSlots;
+    [SerializeField] private Button reRollBtn;
+    [SerializeField] private Button passBtn;
     [SerializeField] private PlayerInventory playerInventory;
 
     private void OnEnable() {
@@ -18,8 +20,21 @@ public class ItemSelector : MonoBehaviour
                 // 버튼을 누르면 해당 버튼에 저장된 Item 정보를 PlayerInventory로 넘김
                 Item selectedItem = button.GetComponent<ItemButton>().item;
                 playerInventory.AddItem(selectedItem);
+                Time.timeScale = 1f;
+                GameManager.Instance.CloseItemSelect();
             });
         }
+
+        reRollBtn.onClick.AddListener(() => {
+            foreach(var button in itemSlots) {
+                SetItemSlot(button);
+            }
+        });
+
+        passBtn.onClick.AddListener(() => {
+            Time.timeScale = 1f;
+            GameManager.Instance.CloseItemSelect();
+        });
     }
 
     private void InitButton() {
