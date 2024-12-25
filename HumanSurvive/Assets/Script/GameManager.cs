@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         player.GetComponent<PlayerManager>().Init();
         Init();
+
+        Time.timeScale = 0f;
+        OpenItemSelect();
     }
 
     private void FixedUpdate() {
@@ -54,7 +57,6 @@ public class GameManager : MonoBehaviour
             SetLevelText();
             Time.timeScale = 0;
             OpenItemSelect();
-
         }
     }
 

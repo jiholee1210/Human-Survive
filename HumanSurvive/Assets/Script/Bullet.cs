@@ -1,8 +1,7 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class FireBall : MonoBehaviour, IWeapon
+public class Bullet : MonoBehaviour, IWeapon
 {
     public IObjectPool<GameObject> pool {get; set;}
     

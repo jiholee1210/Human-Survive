@@ -19,7 +19,12 @@ public class ItemSelector : MonoBehaviour
             button.onClick.AddListener(() => {
                 // 버튼을 누르면 해당 버튼에 저장된 Item 정보를 PlayerInventory로 넘김
                 Item selectedItem = button.GetComponent<ItemButton>().item;
-                playerInventory.AddItem(selectedItem);
+                if (playerInventory.HaveItem(selectedItem)) {
+                    playerInventory.LevelUp(selectedItem);
+                } 
+                else {
+                    playerInventory.AddItem(selectedItem);
+                }
                 Time.timeScale = 1f;
                 GameManager.Instance.CloseItemSelect();
             });
@@ -45,6 +50,7 @@ public class ItemSelector : MonoBehaviour
 
     private void SetItemSlot(Button button) {
         int randomIndex = Random.Range(0, items.Length);
+        // 인벤토리에 아이템이 존재할 때와 처음 획득할 때를 구분해서 레벨업 기능 구현해야 함.
         Item selectedItem = items[randomIndex];
 
         Image image = button.transform.GetChild(0).GetComponent<Image>();
