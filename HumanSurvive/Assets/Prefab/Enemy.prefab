@@ -321,7 +321,7 @@ MonoBehaviour:
   animCon:
   - {fileID: 9100000, guid: 993e090e02c7b164fbca4bc2f7feb5bc, type: 2}
   - {fileID: 9100000, guid: 7518d42498dbf0f4ca40322e38893375, type: 2}
-  - {fileID: 9100000, guid: ac232e262c82d424b891f6dca19547c2, type: 2}
+  - {fileID: 9100000, guid: 151e2f93e7c2ab84c8e0b9c4d240c213, type: 2}
   - {fileID: 9100000, guid: f19e8a04ef27ea343bfd6c72c2f50b7c, type: 2}
   bulletLayer:
     serializedVersion: 2

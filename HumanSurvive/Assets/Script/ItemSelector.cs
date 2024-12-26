@@ -19,12 +19,7 @@ public class ItemSelector : MonoBehaviour
             button.onClick.AddListener(() => {
                 // 버튼을 누르면 해당 버튼에 저장된 Item 정보를 PlayerInventory로 넘김
                 Item selectedItem = button.GetComponent<ItemButton>().item;
-                if (playerInventory.HaveItem(selectedItem)) {
-                    playerInventory.LevelUp(selectedItem);
-                } 
-                else {
-                    playerInventory.AddItem(selectedItem);
-                }
+                playerInventory.AddItem(selectedItem);
                 Time.timeScale = 1f;
                 GameManager.Instance.CloseItemSelect();
             });

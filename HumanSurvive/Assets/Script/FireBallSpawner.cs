@@ -14,7 +14,9 @@ public class FireBallSpawner : MonoBehaviour, ISpawner
 
     public void Init(Item mItem) {
         item = mItem;
-        StartCoroutine(SpawnCoolDown());
+        if (item.itemLevel == 1) {
+            StartCoroutine(SpawnCoolDown());
+        }
     }
 
     private IEnumerator SpawnCoolDown() {
@@ -33,9 +35,5 @@ public class FireBallSpawner : MonoBehaviour, ISpawner
             weapon.transform.position = transform.position;
             weapon.GetComponent<IWeapon>().Init(item);
         }
-    }
-
-    public void LevelUp(Item mItem) {
-
     }
 }

@@ -9,8 +9,4 @@ public class WeaponManager : MonoBehaviour
     public void SpawnItem(Item mItem) {
         weapons[mItem.itemId].GetComponent<ISpawner>().Init(mItem);
     }
-
-    public void ItemLevelUp(Item mItem) {
-        weapons[mItem.itemId].GetComponent<ISpawner>().LevelUp(mItem);
-    }
 }

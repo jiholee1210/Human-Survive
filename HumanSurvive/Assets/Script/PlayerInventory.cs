@@ -11,20 +11,23 @@ public class PlayerInventory : MonoBehaviour
         weaponManager = GetComponentInChildren<WeaponManager>();
     }
 
-    public void AddItem(Item item) {
-        inventory.Add(item);
-        weaponManager.SpawnItem(item);
-        Debug.Log("아이템 추가 : " + item.itemName);
+    public void AddItem(Item mItem) {
+        foreach (Item item in inventory) {
+            if (mItem.itemId == item.itemId) {
+                LevelUp(item);
+                weaponManager.SpawnItem(item);
+                return;
+            }
+        }
+        Item newItem = mItem.CreateCopy();
+        inventory.Add(newItem);
+        weaponManager.SpawnItem(newItem);
+        Debug.Log("아이템 추가 : " + newItem.itemName);
     }
 
     public void LevelUp(Item mItem) {
-        foreach (Item item in inventory) {
-            if (mItem.itemId == item.itemId) {
-                item.baseCount++;
-                weaponManager.ItemLevelUp(item);
-                break;
-            }
-        }
+        mItem.itemLevel++;
+        mItem.baseCount += mItem.countUp[mItem.itemLevel-2];
     }
 
     public List<Item> GetItem() {

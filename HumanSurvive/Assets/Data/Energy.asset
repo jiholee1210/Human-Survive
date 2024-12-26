@@ -21,6 +21,7 @@ MonoBehaviour:
   itemSprite: {fileID: -7213742777133032008, guid: b79e69880d732154996a69d1e1a02912, type: 3}
   animCon: {fileID: 0}
   canOverlap: 0
+  itemLevel: 1
   baseDamage: 5
   baseCount: 1
   dmgUp: []

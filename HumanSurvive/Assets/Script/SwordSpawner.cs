@@ -16,24 +16,15 @@ public class SwordSpawner : MonoBehaviour, ISpawner
 
     public void Init(Item mItem) {
         item = mItem;
-        transform.rotation = Quaternion.Euler(0, 0, 45f);
-        dir = -1f;
         Spawn();
-        StartCoroutine(Swing());
-    }
-
-    private void Spawn() {
-        for(int i = 0; i < item.baseCount; i++) {
-            GameObject weapon = ObjectPoolManager.Instance.GetPooledObject(item.prefabId);
-            weapon.transform.parent = transform;
-            weapon.transform.localPosition = Vector2.zero;
-            weapon.transform.Translate(weapon.transform.right * 1.5f, Space.World);
-            weapon.GetComponent<IWeapon>().Init(item);
+        if(item.itemLevel == 1) {
+            transform.rotation = Quaternion.Euler(0, 0, 45f);
+            dir = -1f;
+            StartCoroutine(Swing());
         }
     }
 
-    public void LevelUp(Item mItem) {
-        item = mItem;
+    private void Spawn() {
         for(int i = 0; i < item.baseCount; i++) {
             GameObject weapon;
             if(i < transform.childCount) {

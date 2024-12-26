@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -7,27 +8,43 @@ public class EnergySpawner : MonoBehaviour, ISpawner
     private float speed;
 
     private void FixedUpdate() {
-        Attack();
+
     }
 
-    public float GetDamage()
-    {
-        return item.baseDamage;
-    }
-
-    public void Attack()
-    {
-        transform.Rotate(Vector3.forward * speed * Time.deltaTime);
-    }
-
-    public void Init(Item mItem)
-    {
+    public void Init(Item mItem) {
         item = mItem;
-        speed = 100f;
+        Spawn();
+        if(item.itemLevel == 1) {
+            speed = 150f;
+            StartCoroutine(Rotate());
+        }
     }
 
-    public void LevelUp(Item mItem) {
+    private void Spawn() {
+        for(int i = 0; i < item.baseCount; i++) {
+            GameObject weapon;
+            if(i < transform.childCount) {
+                weapon = transform.GetChild(i).gameObject;
+            } else {
+                weapon = ObjectPoolManager.Instance.GetPooledObject(item.prefabId);
+                weapon.transform.parent = transform;
+            }
+            weapon.transform.localPosition = Vector2.zero;
+            weapon.transform.localRotation = Quaternion.identity;
 
+            Vector3 rotVec = Vector3.forward * 360 * i / item.baseCount;
+            weapon.transform.Rotate(rotVec);
+
+            weapon.transform.Translate(weapon.transform.right * item.range, Space.World);
+            weapon.GetComponent<IWeapon>().Init(item);
+        }
+    }
+
+    private IEnumerator Rotate() {
+        while(true) {
+            transform.Rotate(Vector3.back * speed * Time.deltaTime);
+            yield return null;
+        }
     }
 
 }

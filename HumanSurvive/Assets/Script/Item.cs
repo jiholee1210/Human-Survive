@@ -25,6 +25,7 @@ public class Item : ScriptableObject
     [SerializeField] public bool canOverlap;
 
     [Header("무기 Info")]
+    [SerializeField] public int itemLevel;
     [SerializeField] public float baseDamage;
     [SerializeField] public int baseCount;
     [SerializeField] public float[] dmgUp;
@@ -32,4 +33,25 @@ public class Item : ScriptableObject
     [SerializeField] public float coolDown;
     [SerializeField] public float range;
     [SerializeField] public bool isGuided;
+
+    public Item CreateCopy() {
+        Item copy = ScriptableObject.CreateInstance<Item>();
+        copy.itemLevel = itemLevel;
+        copy.itemId = this.itemId;
+        copy.prefabId = this.prefabId;
+        copy.itemType = this.itemType;
+        copy.itemName = this.itemName;
+        copy.itemDesc = this.itemDesc;
+        copy.itemSprite = this.itemSprite;
+        copy.animCon = this.animCon;
+        copy.canOverlap = this.canOverlap;
+        copy.baseDamage = this.baseDamage;
+        copy.baseCount = this.baseCount;
+        copy.dmgUp = (float[])this.dmgUp.Clone();
+        copy.countUp = (int[])this.countUp.Clone();
+        copy.coolDown = this.coolDown;
+        copy.range = this.range;
+        copy.isGuided = this.isGuided;
+        return copy;
+    }
 }
