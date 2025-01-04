@@ -8,7 +8,13 @@ public enum ItemType {
 
     Melee = 10,
     Range = 11,
+}
 
+public enum WeaponType {
+    None = 0,
+    Bullet = 1,
+    Cycle = 2,
+    Swing = 3,
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "ScriptableObject/ItemData")]
@@ -26,6 +32,7 @@ public class Item : ScriptableObject
 
     [Header("무기 Info")]
     [SerializeField] public int itemLevel;
+    [SerializeField] public WeaponType weaponType;
     [SerializeField] public float baseDamage;
     [SerializeField] public int baseCount;
     [SerializeField] public float[] dmgUp;
@@ -37,6 +44,7 @@ public class Item : ScriptableObject
     public Item CreateCopy() {
         Item copy = ScriptableObject.CreateInstance<Item>();
         copy.itemLevel = itemLevel;
+        copy.weaponType = weaponType;
         copy.itemId = this.itemId;
         copy.prefabId = this.prefabId;
         copy.itemType = this.itemType;

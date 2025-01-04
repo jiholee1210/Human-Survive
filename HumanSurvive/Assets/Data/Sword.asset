@@ -17,10 +17,11 @@ MonoBehaviour:
   itemType: 1
   itemName: "\uCE7C"
   itemDesc: "\uCE7C\uC744 \uD718\uB450\uB978\uB2E4"
-  itemSprite: {fileID: -3753825769889500098, guid: 722d6bc2bb98cd24da9260fc1d542d40, type: 3}
+  itemSprite: {fileID: 637149415771533701, guid: 274c2e8d03256e9408db0aceb5b739c3, type: 3}
   animCon: {fileID: 0}
   canOverlap: 0
   itemLevel: 1
+  weaponType: 3
   baseDamage: 5
   baseCount: 1
   dmgUp: []

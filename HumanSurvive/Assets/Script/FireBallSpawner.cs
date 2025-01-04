@@ -21,19 +21,20 @@ public class FireBallSpawner : MonoBehaviour, ISpawner
 
     private IEnumerator SpawnCoolDown() {
         while (true) {
-            Spawn();
+            yield return StartCoroutine(Spawn());
             yield return new WaitForSeconds(item.coolDown);
         }
     }
 
-    private void Spawn() {
+    private IEnumerator Spawn() {
         for(int i = 0; i < item.baseCount; i++) {
-            if(item.isGuided && scanner.nearTarget == null) return; 
+            if(item.isGuided && scanner.nearTarget == null) break; 
             
             GameObject weapon = ObjectPoolManager.Instance.GetPooledObject(item.prefabId);
             weapon.transform.parent = transform;
             weapon.transform.position = transform.position;
             weapon.GetComponent<IWeapon>().Init(item);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

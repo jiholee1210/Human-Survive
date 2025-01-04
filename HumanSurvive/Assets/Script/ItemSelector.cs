@@ -10,8 +10,14 @@ public class ItemSelector : MonoBehaviour
     [SerializeField] private Button passBtn;
     [SerializeField] private PlayerInventory playerInventory;
 
+    public Animator animator;
+
     private void OnEnable() {
         InitButton();
+    }
+
+    private void Awake() {
+        animator = GetComponent<Animator>();
     }
 
     private void Start() {
@@ -20,7 +26,6 @@ public class ItemSelector : MonoBehaviour
                 // 버튼을 누르면 해당 버튼에 저장된 Item 정보를 PlayerInventory로 넘김
                 Item selectedItem = button.GetComponent<ItemButton>().item;
                 playerInventory.AddItem(selectedItem);
-                Time.timeScale = 1f;
                 GameManager.Instance.CloseItemSelect();
             });
         }
@@ -32,7 +37,6 @@ public class ItemSelector : MonoBehaviour
         });
 
         passBtn.onClick.AddListener(() => {
-            Time.timeScale = 1f;
             GameManager.Instance.CloseItemSelect();
         });
     }
@@ -50,11 +54,17 @@ public class ItemSelector : MonoBehaviour
 
         Image image = button.transform.GetChild(0).GetComponent<Image>();
         TMP_Text name = button.transform.GetChild(1).GetComponent<TMP_Text>();
-        TMP_Text desc = button.transform.GetChild(2).GetComponent<TMP_Text>();
+        TMP_Text type = button.transform.GetChild(2).GetComponent<TMP_Text>();
+        TMP_Text dmg = button.transform.GetChild(3).GetComponent<TMP_Text>();
+        TMP_Text cool = button.transform.GetChild(4).GetComponent<TMP_Text>();
+
+        string cooldown = selectedItem.coolDown == -1 ? "X" : selectedItem.coolDown.ToString();
 
         image.sprite = selectedItem.itemSprite;
         name.text = selectedItem.itemName;
-        desc.text = selectedItem.itemDesc;
+        type.text = "타입\t: " + selectedItem.weaponType.ToString();
+        dmg.text = "데미지\t: " + selectedItem.baseDamage.ToString();
+        cool.text = "쿨타임\t: " + cooldown;
 
         button.GetComponent<ItemButton>().item = selectedItem;
     }

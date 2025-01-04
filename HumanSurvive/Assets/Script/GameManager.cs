@@ -1,5 +1,7 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -18,12 +20,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake() {
         Instance = this;
+
         player = GameObject.FindWithTag("Player");
         player.GetComponent<PlayerManager>().Init();
         Init();
 
-        Time.timeScale = 0f;
-        OpenItemSelect();
+        StartCoroutine(OpenItemSelectAfterDelay());
     }
 
     private void FixedUpdate() {
@@ -66,11 +68,37 @@ public class GameManager : MonoBehaviour
         expBar.value = player.GetComponent<PlayerManager>().curExp;
     }
 
+    private IEnumerator OpenItemSelectAfterDelay() {
+        
+        yield return new WaitForSeconds(0.1f);
+        // 애니메이션이 재생되도록 설정
+        Time.timeScale = 0;
+        OpenItemSelect();
+        
+   }
+
     private void OpenItemSelect() {
         itemSelect.SetActive(true);
+        itemSelect.GetComponent<Animator>().SetBool("Open", true);
     }
 
     public void CloseItemSelect() {
+        itemSelect.GetComponent<Animator>().SetBool("Open", false);
+        StartCoroutine(WaitForAnimation(itemSelect.GetComponent<Animator>(), "Selector_close"));
+    }
+
+    private IEnumerator WaitForAnimation(Animator animator, string animationStateName) {
+        // 애니메이션이 끝날 때까지 대기
+        while (true) {
+            // 현재 애니메이션 상태 정보 가져오기
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            // 애니메이션이 끝났는지 확인
+            if (stateInfo.IsName(animationStateName) && stateInfo.normalizedTime >= 1.0f) {
+                break; // 애니메이션이 끝났으면 루프 종료
+            }
+            yield return null; // 다음 프레임까지 대기
+        }
+        Time.timeScale = 1f;
         itemSelect.SetActive(false);
     }
 

@@ -22,6 +22,7 @@ MonoBehaviour:
   animCon: {fileID: 0}
   canOverlap: 0
   itemLevel: 1
+  weaponType: 2
   baseDamage: 5
   baseCount: 1
   dmgUp: []
