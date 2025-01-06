@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject itemSelect;
 
     public int killCount;
-    private float time;
+    public float time;
+    public bool canClick;
+    public bool isOpen;
 
     private void Awake() {
         Instance = this;
@@ -25,6 +27,8 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerManager>().Init();
         Init();
 
+        canClick = false;
+        isOpen = false;
         StartCoroutine(OpenItemSelectAfterDelay());
     }
 
@@ -80,6 +84,7 @@ public class GameManager : MonoBehaviour
     private void OpenItemSelect() {
         itemSelect.SetActive(true);
         itemSelect.GetComponent<Animator>().SetBool("Open", true);
+        StartCoroutine(WaitForAnimation(itemSelect.GetComponent<Animator>(), "Selector_open"));
     }
 
     public void CloseItemSelect() {
@@ -88,6 +93,7 @@ public class GameManager : MonoBehaviour
     }
 
     private IEnumerator WaitForAnimation(Animator animator, string animationStateName) {
+        canClick = false;
         // 애니메이션이 끝날 때까지 대기
         while (true) {
             // 현재 애니메이션 상태 정보 가져오기
@@ -98,8 +104,12 @@ public class GameManager : MonoBehaviour
             }
             yield return null; // 다음 프레임까지 대기
         }
-        Time.timeScale = 1f;
-        itemSelect.SetActive(false);
+        if(isOpen) {
+            Time.timeScale = 1f;
+            itemSelect.SetActive(false);
+        }
+        isOpen = !isOpen;
+        canClick = true;
     }
 
     private void Init() {

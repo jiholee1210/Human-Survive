@@ -24,20 +24,22 @@ public class ItemSelector : MonoBehaviour
         foreach (var button in itemSlots) {
             button.onClick.AddListener(() => {
                 // 버튼을 누르면 해당 버튼에 저장된 Item 정보를 PlayerInventory로 넘김
-                Item selectedItem = button.GetComponent<ItemButton>().item;
-                playerInventory.AddItem(selectedItem);
-                GameManager.Instance.CloseItemSelect();
+                if(GameManager.Instance.canClick) {
+                    Item selectedItem = button.GetComponent<ItemButton>().item;
+                    playerInventory.AddItem(selectedItem);
+                    GameManager.Instance.CloseItemSelect();
+                }
             });
         }
 
         reRollBtn.onClick.AddListener(() => {
-            foreach(var button in itemSlots) {
-                SetItemSlot(button);
-            }
+            InitButton();
         });
 
         passBtn.onClick.AddListener(() => {
-            GameManager.Instance.CloseItemSelect();
+            if(GameManager.Instance.canClick) {
+                GameManager.Instance.CloseItemSelect();
+            }
         });
     }
 
@@ -57,13 +59,21 @@ public class ItemSelector : MonoBehaviour
         TMP_Text type = button.transform.GetChild(2).GetComponent<TMP_Text>();
         TMP_Text dmg = button.transform.GetChild(3).GetComponent<TMP_Text>();
         TMP_Text cool = button.transform.GetChild(4).GetComponent<TMP_Text>();
-
-        string cooldown = selectedItem.coolDown == -1 ? "X" : selectedItem.coolDown.ToString();
+        TMP_Text level = button.transform.GetChild(5).GetComponent<TMP_Text>();
 
         image.sprite = selectedItem.itemSprite;
         name.text = selectedItem.itemName;
         type.text = "타입\t: " + selectedItem.weaponType.ToString();
-        dmg.text = "데미지\t: " + selectedItem.baseDamage.ToString();
+        if (playerInventory.HaveItem(selectedItem)) {
+            Item item = playerInventory.GetItem(selectedItem.itemId);
+            level.text = "레벨 " + item.itemLevel;
+            dmg.text = "데미지\t: " + item.baseDamage + " + " + item.dmgUp[selectedItem.itemLevel-1];
+        }
+        else {
+            level.text = "신규!";
+            dmg.text = "데미지\t: " + selectedItem.baseDamage.ToString();
+        }
+        string cooldown = selectedItem.coolDown == -1 ? "X" : selectedItem.coolDown.ToString();
         cool.text = "쿨타임\t: " + cooldown;
 
         button.GetComponent<ItemButton>().item = selectedItem;

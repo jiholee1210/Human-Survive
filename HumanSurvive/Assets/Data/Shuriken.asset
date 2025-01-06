@@ -24,7 +24,12 @@ MonoBehaviour:
   weaponType: 1
   baseDamage: 5
   baseCount: 2
-  dmgUp: []
+  dmgUp:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   countUp: 0100000001000000010000000100000001000000
   coolDown: 0.5
   range: 0

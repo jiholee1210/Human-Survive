@@ -30,7 +30,10 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private void EnemySpawn() {
-        EnemyData data = enemyData[Random.Range(0, enemyData.Length)];
+        // 시간 별 몬스터 스폰
+        // 초 단위 변경부터
+        int spawn = Mathf.FloorToInt(GameManager.Instance.time / 10) < 4 ? Mathf.FloorToInt(GameManager.Instance.time / 10) + 1 : 4;
+        EnemyData data = enemyData[Random.Range(0, spawn)];
         spawnSpeed = data.spawnTime;
         
         GameObject enemy = ObjectPoolManager.Instance.GetPooledObject(0);

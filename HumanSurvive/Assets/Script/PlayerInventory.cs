@@ -30,11 +30,25 @@ public class PlayerInventory : MonoBehaviour
         mItem.baseCount += mItem.countUp[mItem.itemLevel-2];
     }
 
-    public List<Item> GetItem() {
+    public List<Item> GetItems() {
         return inventory;
     }
 
+    public Item GetItem(int id) {
+        foreach(Item item in inventory) {
+            if (item.itemId == id) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     public bool HaveItem(Item mItem) {
-        return inventory.Contains(mItem);
+        foreach(Item item in inventory) {
+            if(mItem.itemId == item.itemId) {
+                return true;
+            }
+        }
+        return false;
     }
 }
