@@ -34,7 +34,9 @@ public class Item : ScriptableObject
     [SerializeField] public int itemLevel;
     [SerializeField] public WeaponType weaponType;
     [SerializeField] public float baseDamage;
+    [SerializeField] public float curDamage;
     [SerializeField] public int baseCount;
+    [SerializeField] public int curCount;
     [SerializeField] public float[] dmgUp;
     [SerializeField] public int[] countUp;
     [SerializeField] public float coolDown;

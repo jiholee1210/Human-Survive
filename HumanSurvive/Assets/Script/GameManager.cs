@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,6 +15,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text levelText;
     [SerializeField] Slider expBar;
     [SerializeField] GameObject itemSelect;
+    [SerializeField] GameObject gameEndObject;
+    [SerializeField] GameObject itemIconPrefab;
+    [SerializeField] Button menuBtn;
+    [SerializeField] Button restartBtn;
 
     public int killCount;
     public float time;
@@ -123,6 +128,44 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameEnd() {
+        Time.timeScale = 0f;
+        ShowEndUI();
+    }
 
+    private void ShowEndUI() {
+        gameEndObject.SetActive(true);
+        // 생존시간 출력
+        TMP_Text record = gameEndObject.transform.GetChild(1).GetComponent<TMP_Text>();
+        int min = Mathf.FloorToInt(time / 60);
+        int sec = Mathf.FloorToInt(time % 60);
+        record.text = string.Format("{0:D2}:{1:D2}", min, sec);
+        // 소지중인 아이템 나열
+        List<Item> inventory = player.GetComponent<PlayerInventory>().GetItems();
+        for(int i = 0; i < inventory.Count; i++) {
+            GameObject icon = Instantiate(itemIconPrefab, gameEndObject.transform);
+            ItemIcon itemIcon = icon.GetComponent<ItemIcon>();
+            itemIcon.item = inventory[i];
+
+            RectTransform rectTransform = icon.GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = new Vector2(-10 * (inventory.Count - 1) + (i * 20), 0);
+        }
+        // 메인메뉴 / 재시작 버튼 활성화
+        menuBtn.onClick.AddListener(() => {
+            BackToMenu();
+        });
+        restartBtn.onClick.AddListener(() => {
+            Restart();
+        });
+    }
+
+    private void BackToMenu() {
+        Time.timeScale = 1f;
+        gameEndObject.SetActive(false);
+        SceneSelector.Instance.LoadMain();
+    }
+    private void Restart() {
+        Time.timeScale = 1f;
+        gameEndObject.SetActive(false);
+        SceneSelector.Instance.LoadGame();
     }
 }

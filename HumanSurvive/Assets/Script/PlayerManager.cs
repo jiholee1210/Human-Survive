@@ -32,6 +32,6 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void Die() {
-        Destroy(gameObject);
+        GameManager.Instance.GameEnd();
     }
 }

@@ -11,16 +11,18 @@ public class SceneSelector : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else {
-            DestroyObject(gameObject);
+            Destroy(gameObject);
         }
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            SceneManager.LoadScene("SampleScene");
-        }
-        if(Input.GetKeyDown(KeyCode.R)) {
-            SceneManager.LoadScene("New Scene");
-        }
+    }
+
+    public void LoadMain() {
+        SceneManager.LoadScene("New Scene");
+    }
+
+    public void LoadGame() {
+        SceneManager.LoadScene("SampleScene");
     }
 }
