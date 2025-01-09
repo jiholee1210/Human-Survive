@@ -4631,6 +4631,9 @@ MonoBehaviour:
   time: 0
   canClick: 0
   isOpen: 0
+  playerData:
+    gold: 0
+    stat: 0000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &101203609
 Transform:
   m_ObjectHideFlags: 0
@@ -23464,6 +23467,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+--- !u!1 &1898036911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1898036912}
+  m_Layer: 0
+  m_Name: EventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1898036912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898036911}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 551.3073, y: 763.32074, z: -13.919188}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2012215052
 GameObject:
   m_ObjectHideFlags: 0
@@ -24135,3 +24169,4 @@ SceneRoots:
   - {fileID: 798003921}
   - {fileID: 604383283}
   - {fileID: 294254105}
+  - {fileID: 1898036912}

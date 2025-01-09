@@ -35,7 +35,7 @@ public class SwordSpawner : MonoBehaviour, ISpawner
             }
             weapon.transform.localPosition = Vector2.zero;
             weapon.transform.localRotation = Quaternion.identity;
-
+        
             Vector3 rotVec = Vector3.forward * 360 * i / item.baseCount;
             weapon.transform.Rotate(rotVec);
 

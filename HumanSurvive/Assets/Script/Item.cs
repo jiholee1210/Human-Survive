@@ -34,16 +34,14 @@ public class Item : ScriptableObject
     [SerializeField] public int itemLevel;
     [SerializeField] public WeaponType weaponType;
     [SerializeField] public float baseDamage;
-    [SerializeField] public float curDamage;
     [SerializeField] public int baseCount;
-    [SerializeField] public int curCount;
     [SerializeField] public float[] dmgUp;
     [SerializeField] public int[] countUp;
     [SerializeField] public float coolDown;
     [SerializeField] public float range;
     [SerializeField] public bool isGuided;
 
-    public Item CreateCopy() {
+    public Item CreateCopy(PlayerData playerData) {
         Item copy = ScriptableObject.CreateInstance<Item>();
         copy.itemLevel = itemLevel;
         copy.weaponType = weaponType;
@@ -56,11 +54,11 @@ public class Item : ScriptableObject
         copy.animCon = this.animCon;
         copy.canOverlap = this.canOverlap;
         copy.baseDamage = this.baseDamage;
-        copy.baseCount = this.baseCount;
+        copy.baseCount = this.baseCount + playerData.stat[5];
         copy.dmgUp = (float[])this.dmgUp.Clone();
         copy.countUp = (int[])this.countUp.Clone();
         copy.coolDown = this.coolDown;
-        copy.range = this.range;
+        copy.range = this.range + playerData.stat[4];
         copy.isGuided = this.isGuided;
         return copy;
     }

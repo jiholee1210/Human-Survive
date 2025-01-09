@@ -66,7 +66,7 @@ public class ItemSelector : MonoBehaviour
         type.text = "타입\t: " + selectedItem.weaponType.ToString();
         if (playerInventory.HaveItem(selectedItem)) {
             Item item = playerInventory.GetItem(selectedItem.itemId);
-            level.text = "레벨 " + item.itemLevel;
+            level.text = "레벨 " + item.itemLevel + " -> " + (item.itemLevel+1);
             dmg.text = "데미지\t: " + item.baseDamage + " + " + item.dmgUp[selectedItem.itemLevel-1];
         }
         else {

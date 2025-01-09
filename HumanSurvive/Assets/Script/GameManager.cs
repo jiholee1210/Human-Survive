@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public bool canClick;
     public bool isOpen;
 
+    public PlayerData playerData;
+
     private void Awake() {
         Instance = this;
 
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerManager>().Init();
         Init();
 
+        playerData = DataManager.Instance.playerData;
         canClick = false;
         isOpen = false;
         StartCoroutine(OpenItemSelectAfterDelay());

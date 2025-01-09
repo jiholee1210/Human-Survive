@@ -19,7 +19,7 @@ public class PlayerInventory : MonoBehaviour
                 return;
             }
         }
-        Item newItem = mItem.CreateCopy();
+        Item newItem = mItem.CreateCopy(GameManager.Instance.playerData);
         inventory.Add(newItem);
         weaponManager.SpawnItem(newItem);
         Debug.Log("아이템 추가 : " + newItem.itemName);
@@ -27,6 +27,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void LevelUp(Item mItem) {
         mItem.itemLevel++;
+        mItem.baseDamage += mItem.dmgUp[mItem.itemLevel-2];
         mItem.baseCount += mItem.countUp[mItem.itemLevel-2];
     }
 
