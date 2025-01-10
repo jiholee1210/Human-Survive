@@ -19,7 +19,8 @@ public class EnemyManager : MonoBehaviour
     private EnemyAttack enemyAttack;
     private EnemyHealth enemyHealth;
 
-    private GameObject player;
+    private Transform player;
+    public bool isHorde;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,16 +43,29 @@ public class EnemyManager : MonoBehaviour
     {
         Debug.Log(data.id);
         SetEnemy(data);
+        isHorde = false;
         transform.position = randomPos;
+        enemyMovement.SetHorde(isHorde);
+        rigidbody2D.linearVelocity = Vector2.zero;
+    }
+
+    public void InitHorde(Vector2 randomPos, EnemyData data) {
+        SetEnemy(data);
+        isHorde = true;
+        transform.position = randomPos;
+        enemyMovement.SetHorde(isHorde);
+        enemyMovement.SetSpeed(4);
         rigidbody2D.linearVelocity = Vector2.zero;
     }
 
     private void SetEnemy(EnemyData data) {
         animator.runtimeAnimatorController = animCon[data.id];
+        enemyMovement.SetPlayer(player);
         enemyMovement.SetSpeed(data.speed);
         enemyAttack.SetDamage(data.damage);
         enemyHealth.SetHealth(data.health);
         capsuleCollider2D.size = data.colSize;
+        transform.localScale = data.scale;
     }
 
     private void OnEnable() {
@@ -61,7 +75,7 @@ public class EnemyManager : MonoBehaviour
         enemyAttack = GetComponent<EnemyAttack>();
         enemyHealth = GetComponent<EnemyHealth>();
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
-        player = GameManager.Instance.player;
+        player = GameManager.Instance.player.transform;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -76,7 +90,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private void Die() {
+    public void Die() {
         pool.Release(gameObject);
     }
 }

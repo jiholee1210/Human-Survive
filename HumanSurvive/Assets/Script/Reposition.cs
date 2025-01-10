@@ -5,6 +5,9 @@ public class Reposition : MonoBehaviour
 {
     [SerializeField] LayerMask colLayer;
 
+    private EnemyManager enemyManager;
+
+
     private void OnTriggerExit2D(Collider2D other) {
         if (((1 << other.gameObject.layer) & colLayer) != 0) {
             switch (gameObject.layer) {
@@ -12,7 +15,13 @@ public class Reposition : MonoBehaviour
                     TileRepos();
                     break;
                 case 7:
-                    EnemyRepos();
+                    enemyManager = GetComponent<EnemyManager>();
+                    if(enemyManager.isHorde) {
+                        enemyManager.Die();
+                    }
+                    else {
+                        EnemyRepos();
+                    }
                     break;
             }   
         }

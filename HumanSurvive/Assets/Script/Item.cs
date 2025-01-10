@@ -39,6 +39,7 @@ public class Item : ScriptableObject
     [SerializeField] public int[] countUp;
     [SerializeField] public float coolDown;
     [SerializeField] public float range;
+    [SerializeField] public float speed;
     [SerializeField] public bool isGuided;
 
     public Item CreateCopy(PlayerData playerData) {
@@ -55,6 +56,7 @@ public class Item : ScriptableObject
         copy.canOverlap = this.canOverlap;
         copy.baseDamage = this.baseDamage;
         copy.baseCount = this.baseCount + playerData.stat[5];
+        copy.speed = this.speed + playerData.stat[3];
         copy.dmgUp = (float[])this.dmgUp.Clone();
         copy.countUp = (int[])this.countUp.Clone();
         copy.coolDown = this.coolDown;
