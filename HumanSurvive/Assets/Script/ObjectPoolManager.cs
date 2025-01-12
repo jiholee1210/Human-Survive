@@ -9,7 +9,7 @@ public class ObjectPoolManager : MonoBehaviour
     [SerializeField] GameObject[] prefabs;
 
     private int size = 10;
-    private Dictionary<int, IObjectPool<GameObject>> poolDic = new Dictionary<int, IObjectPool<GameObject>>();
+    private Dictionary<int, ObjectPool<GameObject>> poolDic = new Dictionary<int, ObjectPool<GameObject>>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -21,15 +21,11 @@ public class ObjectPoolManager : MonoBehaviour
     private void Init() {
         for (int i = 0; i < prefabs.Length; i++) {
             int currentIndex = i;
-            IObjectPool<GameObject> pool = new ObjectPool<GameObject>(
-                () => CreatePooledItem(currentIndex), OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject, true, size, size
+            ObjectPool<GameObject> pool = new ObjectPool<GameObject>(
+                () => CreatePooledItem(currentIndex), OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject
             );
             poolDic.Add(currentIndex, pool);
-
-            /*for (int j = 0; j < size; j++) {
-                GameObject pooledObject = CreatePooledItem(currentIndex);
-                pool.Release(pooledObject);
-            }*/
+            Debug.Log(currentIndex + " 풀 생성");
         }
     }
 
@@ -43,8 +39,9 @@ public class ObjectPoolManager : MonoBehaviour
                 case 0:
                     poolGo.GetComponent<EnemyManager>().pool = poolDic[id];
                     break;
-                case 1:
+                default:
                     poolGo.GetComponent<IWeapon>().pool = poolDic[id];
+                    Debug.Log(id + "번 무기 풀 연결 완료");
                     break;
             }
             return poolGo;
@@ -53,14 +50,23 @@ public class ObjectPoolManager : MonoBehaviour
     }
 
     public void OnTakeFromPool(GameObject poolGo) {
+        if(poolGo == null) {
+            return;
+        }
         poolGo.SetActive(true);
     }
 
     public void OnReturnedToPool(GameObject poolGo) {
+        if (poolGo == null) {
+            return;
+        }
         poolGo.SetActive(false);
     }
 
     public void OnDestroyPoolObject(GameObject poolGo) {
+        if (poolGo == null) {
+            return;
+        }
         Destroy(poolGo);
     }
 

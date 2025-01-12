@@ -20,7 +20,8 @@ public class EnemyManager : MonoBehaviour
     private EnemyHealth enemyHealth;
 
     private Transform player;
-    public bool isHorde;
+    [SerializeField] public bool isHorde;
+    [SerializeField] public bool isDead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,17 +42,20 @@ public class EnemyManager : MonoBehaviour
     
     public void Init(Vector2 randomPos, EnemyData data)
     {
-        Debug.Log(data.id);
+        Debug.Log(data.id + " enemy");
         SetEnemy(data);
         isHorde = false;
+        isDead = false;
         transform.position = randomPos;
         enemyMovement.SetHorde(isHorde);
         rigidbody2D.linearVelocity = Vector2.zero;
     }
 
     public void InitHorde(Vector2 randomPos, EnemyData data) {
+        Debug.Log(data.id + " enemyHorde");
         SetEnemy(data);
         isHorde = true;
+        isDead = false;
         transform.position = randomPos;
         enemyMovement.SetHorde(isHorde);
         enemyMovement.SetSpeed(4);
@@ -91,6 +95,8 @@ public class EnemyManager : MonoBehaviour
     }
 
     public void Die() {
+        if(isDead) return;
+        isDead = true;
         pool.Release(gameObject);
     }
 }
