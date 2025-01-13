@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject itemIconPrefab;
     [SerializeField] Button menuBtn;
     [SerializeField] Button restartBtn;
+    [SerializeField] GameObject artifactSelect;
 
     public int killCount;
     public float time;
@@ -92,15 +93,26 @@ public class GameManager : MonoBehaviour
     private void OpenItemSelect() {
         itemSelect.SetActive(true);
         itemSelect.GetComponent<Animator>().SetBool("Open", true);
-        StartCoroutine(WaitForAnimation(itemSelect.GetComponent<Animator>(), "Selector_open"));
+        StartCoroutine(WaitForAnimation(itemSelect, itemSelect.GetComponent<Animator>(), "Selector_open"));
     }
 
     public void CloseItemSelect() {
         itemSelect.GetComponent<Animator>().SetBool("Open", false);
-        StartCoroutine(WaitForAnimation(itemSelect.GetComponent<Animator>(), "Selector_close"));
+        StartCoroutine(WaitForAnimation(itemSelect, itemSelect.GetComponent<Animator>(), "Selector_close"));
     }
 
-    private IEnumerator WaitForAnimation(Animator animator, string animationStateName) {
+    public void OpenArtifact() {
+        artifactSelect.SetActive(true);
+        artifactSelect.GetComponent<Animator>().SetBool("Open", true);
+        StartCoroutine(WaitForAnimation(artifactSelect, artifactSelect.GetComponent<Animator>(), "Artifact_open"));
+    }
+
+    public void CloseArtifact() {
+        artifactSelect.GetComponent<Animator>().SetBool("Open", false);
+        StartCoroutine(WaitForAnimation(artifactSelect, artifactSelect.GetComponent<Animator>(), "Artifact_close"));
+    }
+
+    private IEnumerator WaitForAnimation(GameObject selector, Animator animator, string animationStateName) {
         canClick = false;
         // 애니메이션이 끝날 때까지 대기
         while (true) {
@@ -114,7 +126,7 @@ public class GameManager : MonoBehaviour
         }
         if(isOpen) {
             Time.timeScale = 1f;
-            itemSelect.SetActive(false);
+            selector.SetActive(false);
         }
         isOpen = !isOpen;
         canClick = true;

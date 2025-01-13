@@ -4,7 +4,7 @@ using UnityEngine;
 public enum ItemType {
     None = 0,
     Weapon = 1,
-    Buff = 2,
+    Artifact = 2,
 
     Melee = 10,
     Range = 11,

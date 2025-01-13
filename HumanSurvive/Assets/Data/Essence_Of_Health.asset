@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee01dd450b0bd741a08bfcc682b9a08, type: 3}
+  m_Name: Essence_Of_Health
+  m_EditorClassIdentifier: 
+  itemId: 11
+  prefabId: 0
+  itemType: 2
+  itemName: "\uD68C\uBCF5\uC758 \uC815\uC218"
+  itemDesc: "\uCCB4\uB825 + 10% / \uD68C\uBCF5 \uD6A8\uC728 +10%"
+  itemSprite: {fileID: 2576149590731505127, guid: 37ce4ea09f886dd45836a6f94ec3369b, type: 3}
+  animCon: {fileID: 0}
+  canOverlap: 0
+  itemLevel: 0
+  weaponType: 0
+  baseDamage: 0
+  baseCount: 0
+  dmgUp: []
+  countUp: 
+  coolDown: 0
+  range: 0
+  speed: 0
+  isGuided: 0

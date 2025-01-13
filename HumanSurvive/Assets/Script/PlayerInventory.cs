@@ -25,6 +25,12 @@ public class PlayerInventory : MonoBehaviour
         Debug.Log("아이템 추가 : " + newItem.itemName);
     }
 
+    public void AddArtifact(Item mItem) {
+        Item newItem = mItem.CreateCopy(GameManager.Instance.playerData);
+        inventory.Add(newItem);
+        Debug.Log("아이템 추가 : " + newItem.itemName);
+    }
+
     public void LevelUp(Item mItem) {
         mItem.itemLevel++;
         mItem.baseDamage += mItem.dmgUp[mItem.itemLevel-2];

@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] RuntimeAnimatorController[] animCon;
     [SerializeField] LayerMask bulletLayer;
+    [SerializeField] GameObject box;
 
     private Rigidbody2D rigidbody2D;
     private Animator animator;
@@ -94,9 +95,15 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    private void SpawnBox(Vector3 lastPos) {
+        Instantiate(box, lastPos, Quaternion.identity);
+    }
+
     public void Die() {
         if(isDead) return;
         isDead = true;
+        Vector3 lastPos = transform.position;
+        SpawnBox(lastPos);
         pool.Release(gameObject);
     }
 }
