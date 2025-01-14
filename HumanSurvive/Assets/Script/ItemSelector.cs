@@ -64,10 +64,10 @@ public class ItemSelector : MonoBehaviour
         image.sprite = selectedItem.itemSprite;
         name.text = selectedItem.itemName;
         type.text = "타입\t: " + selectedItem.weaponType.ToString();
-        if (playerInventory.HaveItem(selectedItem)) {
-            Item item = playerInventory.GetItem(selectedItem.itemId);
+        if (playerInventory.HaveWeapon(selectedItem)) {
+            Item item = playerInventory.GetWeapon(selectedItem.itemId);
             level.text = "레벨 " + item.itemLevel + " -> " + (item.itemLevel+1);
-            dmg.text = "데미지\t: " + item.baseDamage + " + " + item.dmgUp[selectedItem.itemLevel-1];
+            dmg.text = "데미지\t: " + item.baseDamage + " + " + item.dmgUp[item.itemLevel-1];
         }
         else {
             level.text = "신규!";

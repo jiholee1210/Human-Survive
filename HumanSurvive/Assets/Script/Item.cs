@@ -34,6 +34,7 @@ public class Item : ScriptableObject
     [SerializeField] public int itemLevel;
     [SerializeField] public WeaponType weaponType;
     [SerializeField] public float baseDamage;
+    [SerializeField] public float finalDamage;
     [SerializeField] public int baseCount;
     [SerializeField] public float[] dmgUp;
     [SerializeField] public int[] countUp;
@@ -55,6 +56,7 @@ public class Item : ScriptableObject
         copy.animCon = this.animCon;
         copy.canOverlap = this.canOverlap;
         copy.baseDamage = this.baseDamage;
+        copy.finalDamage = this.finalDamage;
         copy.baseCount = this.baseCount + playerData.stat[5];
         copy.speed = this.speed + playerData.stat[3];
         copy.dmgUp = (float[])this.dmgUp.Clone();

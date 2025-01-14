@@ -15,8 +15,8 @@ TagManager:
   - Enemy
   - TileCheck
   - Attack
-  - 
-  - 
+  - Damage
+  - Shadow
   - 
   - 
   - 
@@ -40,6 +40,18 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Game
+    uniqueID: 3376663279
+    locked: 0
+  - name: 
+    uniqueID: 1029183249
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 2682029805
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 3641449075
     locked: 0
   m_RenderingLayers:
   - Default

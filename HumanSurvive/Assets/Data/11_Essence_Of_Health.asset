@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ee01dd450b0bd741a08bfcc682b9a08, type: 3}
-  m_Name: Glove
+  m_Name: 11_Essence_Of_Health
   m_EditorClassIdentifier: 
-  itemId: 13
+  itemId: 11
   prefabId: 0
   itemType: 2
-  itemName: "\uAC00\uC8FD \uC7A5\uAC11"
-  itemDesc: "\uACF5\uACA9\uC18D\uB3C4 +20%"
-  itemSprite: {fileID: -3960259407536092533, guid: 0ef39c4f889256c469d2ed5d3d6cfac3, type: 3}
+  itemName: "\uD68C\uBCF5\uC758 \uC815\uC218"
+  itemDesc: "\uCCB4\uB825 + 10% / \uD68C\uBCF5 \uD6A8\uC728 +10%"
+  itemSprite: {fileID: 2576149590731505127, guid: 37ce4ea09f886dd45836a6f94ec3369b, type: 3}
   animCon: {fileID: 0}
   canOverlap: 0
   itemLevel: 0

@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
         int hordeSpawn = Mathf.FloorToInt(GameManager.Instance.time / 10);
         Spawn(enemyData[0]);
         if(bossSpawn == bossSpawnCheck) {
-            Spawn(enemyData[bossSpawn]);
+            SpawnBoss(enemyData[bossSpawn]);
             bossSpawnCheck++;
         }
         if(hordeSpawn == hordeSpawnCheck) {
@@ -57,6 +57,15 @@ public class EnemySpawner : MonoBehaviour
         if(enemy != null) {
             Vector2 randomPos = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
             enemy.GetComponent<EnemyManager>().Init(randomPos, enemyData);
+        }
+    }
+
+    private void SpawnBoss(EnemyData enemyData) {
+        GameObject enemy = ObjectPoolManager.Instance.GetPooledObject(0);
+
+        if(enemy != null) {
+            Vector2 randomPos = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+            enemy.GetComponent<EnemyManager>().InitBoss(randomPos, enemyData);
         }
     }
 

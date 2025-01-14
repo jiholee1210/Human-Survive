@@ -11,7 +11,6 @@ public class Shuriken : MonoBehaviour, IWeapon
 
     private Vector2 dir;
     private Quaternion rotation;
-    private float speed = 8f;
     private Item item;
     private bool isHit = false;
 
@@ -28,11 +27,11 @@ public class Shuriken : MonoBehaviour, IWeapon
     }
 
     public void Attack() {
-        rigidbody2D.MovePositionAndRotation(rigidbody2D.position + (dir * speed * Time.deltaTime), rotation);
+        rigidbody2D.MovePositionAndRotation(rigidbody2D.position + (dir * item.speed * Time.deltaTime), rotation);
     }
 
     public float GetDamage() {
-        return item.baseDamage;
+        return item.baseDamage * item.finalDamage;
     }
 
     public void Init(Item mItem) {

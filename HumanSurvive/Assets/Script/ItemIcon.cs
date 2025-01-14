@@ -29,7 +29,7 @@ public class ItemIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         level.text = "레벨 " + item.itemLevel;
         type.text = "타입\t: " + item.weaponType;
-        dmg.text = "데미지\t: " + item.baseDamage;
+        dmg.text = "데미지\t: " + item.baseDamage * item.finalDamage;
         dps.text = "DPS\t: 0";
     }
 

@@ -7,7 +7,7 @@ public class Swing : MonoBehaviour, IWeapon
     private Item item;
 
     public float GetDamage() {
-        return item.baseDamage;
+        return item.baseDamage * item.finalDamage;
     }
 
     public void Attack() {

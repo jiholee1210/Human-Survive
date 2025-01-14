@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour
         int sec = Mathf.FloorToInt(time % 60);
         record.text = string.Format("{0:D2}:{1:D2}", min, sec);
         // 소지중인 아이템 나열
-        List<Item> inventory = player.GetComponent<PlayerInventory>().GetItems();
+        List<Item> inventory = player.GetComponent<PlayerInventory>().GetWeapons();
         for(int i = 0; i < inventory.Count; i++) {
             GameObject icon = Instantiate(itemIconPrefab, gameEndObject.transform);
             ItemIcon itemIcon = icon.GetComponent<ItemIcon>();

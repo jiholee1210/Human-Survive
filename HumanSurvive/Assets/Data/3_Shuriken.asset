@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ee01dd450b0bd741a08bfcc682b9a08, type: 3}
-  m_Name: Shuriken
+  m_Name: 3_Shuriken
   m_EditorClassIdentifier: 
   itemId: 3
   prefabId: 4
@@ -22,7 +22,8 @@ MonoBehaviour:
   canOverlap: 0
   itemLevel: 1
   weaponType: 1
-  baseDamage: 5
+  baseDamage: 2
+  finalDamage: 1
   baseCount: 2
   dmgUp:
   - 0
@@ -31,6 +32,7 @@ MonoBehaviour:
   - 0
   - 0
   countUp: 0100000001000000010000000100000001000000
-  coolDown: 0.5
+  coolDown: 1
   range: 0
+  speed: 12
   isGuided: 1

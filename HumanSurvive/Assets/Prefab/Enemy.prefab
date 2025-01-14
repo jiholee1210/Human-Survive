@@ -328,8 +328,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   box: {fileID: 6913692986428533987, guid: 5ea9a20c22465c845a7ebdae1ad6474c, type: 3}
+  damageText: {fileID: 8941590042015461533, guid: 33784ccf7827bf345bf738544a783c41, type: 3}
   isHorde: 0
   isDead: 0
+  isBoss: 0
 --- !u!114 &8930255138925311942
 MonoBehaviour:
   m_ObjectHideFlags: 0

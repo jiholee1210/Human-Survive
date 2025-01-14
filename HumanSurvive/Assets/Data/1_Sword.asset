@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ee01dd450b0bd741a08bfcc682b9a08, type: 3}
-  m_Name: Energy
+  m_Name: 1_Sword
   m_EditorClassIdentifier: 
-  itemId: 2
-  prefabId: 3
+  itemId: 1
+  prefabId: 2
   itemType: 1
-  itemName: "\uC5D0\uB108\uC9C0\uBCFC"
-  itemDesc: "\uCE90\uB9AD\uD130\uB97C \uBCF4\uD638\uD558\uB294 \uC5D0\uB108\uC9C0\uBCFC\uC744
-    \uC0DD\uC131"
-  itemSprite: {fileID: -7213742777133032008, guid: b79e69880d732154996a69d1e1a02912, type: 3}
+  itemName: "\uCE7C"
+  itemDesc: "\uCE7C\uC744 \uD718\uB450\uB978\uB2E4"
+  itemSprite: {fileID: 637149415771533701, guid: 274c2e8d03256e9408db0aceb5b739c3, type: 3}
   animCon: {fileID: 0}
   canOverlap: 0
   itemLevel: 1
-  weaponType: 2
-  baseDamage: 5
+  weaponType: 3
+  baseDamage: 3
+  finalDamage: 1
   baseCount: 1
   dmgUp:
   - 0
@@ -33,5 +33,6 @@ MonoBehaviour:
   - 0
   countUp: 0100000001000000010000000100000001000000
   coolDown: -1
-  range: 3
+  range: 0
+  speed: 0
   isGuided: 0

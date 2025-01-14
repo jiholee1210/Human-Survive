@@ -6583,7 +6583,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &604383282
 Canvas:
   m_ObjectHideFlags: 0
@@ -6602,10 +6602,10 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: -1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9999
   m_TargetDisplay: 0
 --- !u!224 &604383283
 RectTransform:
@@ -6837,7 +6837,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000efca43c91117583ded86dc9f731a0cd9
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -7326,7 +7326,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -4756028443593143600, guid: 5dee5f715e06bd740be2de6a9981547b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8305,6 +8305,7 @@ GameObject:
   - component: {fileID: 1176538146}
   - component: {fileID: 1176538148}
   - component: {fileID: 1176538149}
+  - component: {fileID: 1176538150}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -8440,7 +8441,7 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -8506,7 +8507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854fc954a682d8e458da7c71e1149663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHp: 50
+  currentHp: 10000
   defaultHp: 0
   enemyLayer:
     serializedVersion: 2
@@ -8560,6 +8561,18 @@ MonoBehaviour:
   level: 0
   curExp: 0
   maxExp: 0
+--- !u!114 &1176538150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176538139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c59a9286af0a3a4195dec315c3a9f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1184118132
 GameObject:
   m_ObjectHideFlags: 0

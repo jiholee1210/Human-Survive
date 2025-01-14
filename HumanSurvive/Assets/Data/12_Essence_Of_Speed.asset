@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ee01dd450b0bd741a08bfcc682b9a08, type: 3}
-  m_Name: Essence_Of_
+  m_Name: 12_Essence_Of_Speed
   m_EditorClassIdentifier: 
-  itemId: 10
+  itemId: 12
   prefabId: 0
   itemType: 2
-  itemName: "\uD798\uC758 \uC815\uC218"
-  itemDesc: "\uB370\uBBF8\uC9C0 +25%"
-  itemSprite: {fileID: 8617203443882197096, guid: 6637940b042853446b79971b5cb86f32, type: 3}
+  itemName: "\uC18D\uB3C4\uC758 \uC815\uC218"
+  itemDesc: "\uC774\uB3D9\uC18D\uB3C4 +10%"
+  itemSprite: {fileID: 4918235488527674065, guid: 67a6a2768d24ff64abba25eefc109616, type: 3}
   animCon: {fileID: 0}
   canOverlap: 0
   itemLevel: 0
