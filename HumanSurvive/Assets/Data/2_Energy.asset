@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 2
   prefabId: 3
+  ability: 0
   itemType: 1
   itemName: "\uC5D0\uB108\uC9C0\uBCFC"
   itemDesc: "\uCE90\uB9AD\uD130\uB97C \uBCF4\uD638\uD558\uB294 \uC5D0\uB108\uC9C0\uBCFC\uC744
@@ -27,11 +28,11 @@ MonoBehaviour:
   finalDamage: 1
   baseCount: 1
   dmgUp:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
   countUp: 0100000001000000010000000100000001000000
   coolDown: -1
   range: 3

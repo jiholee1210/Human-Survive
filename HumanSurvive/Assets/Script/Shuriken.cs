@@ -31,7 +31,7 @@ public class Shuriken : MonoBehaviour, IWeapon
     }
 
     public float GetDamage() {
-        return item.baseDamage * item.finalDamage;
+        return item.baseDamage * GameManager.Instance.playerData.finalDamage;
     }
 
     public void Init(Item mItem) {

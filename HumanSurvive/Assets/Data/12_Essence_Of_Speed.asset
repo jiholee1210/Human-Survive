@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 12
   prefabId: 0
+  ability: 2
   itemType: 2
   itemName: "\uC18D\uB3C4\uC758 \uC815\uC218"
   itemDesc: "\uC774\uB3D9\uC18D\uB3C4 +10%"
@@ -23,6 +24,7 @@ MonoBehaviour:
   itemLevel: 0
   weaponType: 0
   baseDamage: 0
+  finalDamage: 0
   baseCount: 0
   dmgUp: []
   countUp: 

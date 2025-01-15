@@ -3,14 +3,18 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+    private IArtifact[] ability;
+
     private List<Item> weapon = new List<Item>();
     private List<Item> artifact = new List<Item>();
     private WeaponManager weaponManager;
-    private ItemManager itemManager;
 
     private void Start() {
         weaponManager = GetComponentInChildren<WeaponManager>();
-        itemManager = GetComponent<ItemManager>();
+        ability = GetComponentsInChildren<IArtifact>();
+        foreach (var artifact in ability) {
+            Debug.Log("Found artifact: " + artifact.GetType().Name);
+        }
     }
 
     public void AddItem(Item mItem) {
@@ -30,7 +34,7 @@ public class PlayerInventory : MonoBehaviour
     public void AddArtifact(Item mItem) {
         Item newItem = mItem.CreateCopy(GameManager.Instance.playerData);
         artifact.Add(newItem);
-        itemManager.ApplyArtifact(newItem);
+        ability[newItem.ability].Ability();
         Debug.Log("아이템 추가 : " + newItem.itemName);
     }
 

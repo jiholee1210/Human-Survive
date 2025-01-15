@@ -27,7 +27,6 @@ public class UIManager : MonoBehaviour
         upgradeBtn.onClick.AddListener(() => {
             upgradePanel.SetActive(true);
             SetUpgradeStat();
-
         });
         exitBtn.onClick.AddListener(() => {
             upgradePanel.SetActive(false);
@@ -36,9 +35,9 @@ public class UIManager : MonoBehaviour
             int index = i;
             upBtn[index].onClick.AddListener(() => {
                 Debug.Log(index);
-                Debug.Log(index + "번째 업그레이드 클릭 : " + DataManager.Instance.playerData.stat[index]);
-                DataManager.Instance.playerData.stat[index]++;
-                stats[index].text = DataManager.Instance.playerData.stat[index].ToString();
+                Debug.Log(index + "번째 업그레이드 클릭 : " + DataManager.Instance.playerData.upgrade[index]);
+                DataManager.Instance.playerData.upgrade[index]++;
+                stats[index].text = DataManager.Instance.playerData.upgrade[index].ToString();
                 DataManager.Instance.SavePlayerData();
             });
         }
@@ -46,9 +45,9 @@ public class UIManager : MonoBehaviour
             int index = i;
             downBtn[index].onClick.AddListener(() => {
                 Debug.Log(index);
-                Debug.Log(index + "번째 업그레이드 클릭 : " + DataManager.Instance.playerData.stat[index]);
-                DataManager.Instance.playerData.stat[index]--;
-                stats[index].text = DataManager.Instance.playerData.stat[index].ToString();
+                Debug.Log(index + "번째 업그레이드 클릭 : " + DataManager.Instance.playerData.upgrade[index]);
+                DataManager.Instance.playerData.upgrade[index]--;
+                stats[index].text = DataManager.Instance.playerData.upgrade[index].ToString();
                 DataManager.Instance.SavePlayerData();
             });
         }
@@ -57,7 +56,7 @@ public class UIManager : MonoBehaviour
     private void SetUpgradeStat() {
         for(int i = 0; i < stats.Length; i++) {
             int index = i;
-            stats[index].text = DataManager.Instance.playerData.stat[index].ToString();
+            stats[index].text = DataManager.Instance.playerData.upgrade[index].ToString();
         }
     }
 }

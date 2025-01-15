@@ -2,14 +2,18 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
-    [SerializeField] float currentHp = 100f;
-    [SerializeField] float defaultHp = 0;
+    [SerializeField] float maxHp;
+    [SerializeField] float currentHp;
+    [SerializeField] float defaultHp;
     [SerializeField] LayerMask enemyLayer;
 
     private PlayerManager playerManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        defaultHp = 100f * GameManager.Instance.playerData.hp;
+        maxHp = defaultHp;
+        currentHp = defaultHp;
         playerManager = GetComponent<PlayerManager>();
     }
 
@@ -22,6 +26,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     void Update()
     {
         
+    }
+
+    public void SetMaxHp() {
+        maxHp = defaultHp * GameManager.Instance.playerData.hp;
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

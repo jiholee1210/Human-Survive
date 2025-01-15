@@ -45,5 +45,20 @@ public class DataManager : MonoBehaviour
 [System.Serializable]
 public class PlayerData {
     public int gold = 0;
-    public int[] stat = {0, 0, 0, 0, 0, 0, 0, 0};
+    public float hp = 1f;
+    public float genHp = 1f;
+    public float speed = 1f;
+    public float finalDamage = 1f;
+    public int[] upgrade = {0, 0, 0, 0, 0, 0, 0, 0};
+
+    public PlayerData Clone() {
+        return new PlayerData {
+            gold = this.gold,
+            hp = this.hp,
+            genHp = this.genHp,
+            speed = this.speed,
+            finalDamage = this.finalDamage,
+            upgrade = this.upgrade,
+        };
+    }
 }

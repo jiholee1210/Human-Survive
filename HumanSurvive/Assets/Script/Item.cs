@@ -23,6 +23,7 @@ public class Item : ScriptableObject
     [Header("아이템 Info")]
     [SerializeField] public int itemId;
     [SerializeField] public int prefabId;
+    [SerializeField] public int ability;
     [SerializeField] public ItemType itemType;
     [SerializeField] public string itemName;
     [SerializeField] public string itemDesc;
@@ -49,6 +50,7 @@ public class Item : ScriptableObject
         copy.weaponType = weaponType;
         copy.itemId = this.itemId;
         copy.prefabId = this.prefabId;
+        copy.ability = this.ability;
         copy.itemType = this.itemType;
         copy.itemName = this.itemName;
         copy.itemDesc = this.itemDesc;
@@ -57,12 +59,12 @@ public class Item : ScriptableObject
         copy.canOverlap = this.canOverlap;
         copy.baseDamage = this.baseDamage;
         copy.finalDamage = this.finalDamage;
-        copy.baseCount = this.baseCount + playerData.stat[5];
-        copy.speed = this.speed + playerData.stat[3];
+        copy.baseCount = this.baseCount + playerData.upgrade[5];
+        copy.speed = this.speed + playerData.upgrade[3];
         copy.dmgUp = (float[])this.dmgUp.Clone();
         copy.countUp = (int[])this.countUp.Clone();
         copy.coolDown = this.coolDown;
-        copy.range = this.range + playerData.stat[4];
+        copy.range = this.range + playerData.upgrade[4];
         copy.isGuided = this.isGuided;
         return copy;
     }

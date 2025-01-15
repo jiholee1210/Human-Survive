@@ -26,16 +26,16 @@ public class GameManager : MonoBehaviour
     public bool canClick;
     public bool isOpen;
 
-    public PlayerData playerData;
+    [SerializeField] public PlayerData playerData;
 
     private void Awake() {
         Instance = this;
-
+        Debug.Log("게임 매니저 초기세팅");
         player = GameObject.FindWithTag("Player");
         player.GetComponent<PlayerManager>().Init();
         Init();
 
-        playerData = DataManager.Instance.playerData;
+        playerData = DataManager.Instance.playerData.Clone();
         canClick = false;
         isOpen = false;
         StartCoroutine(OpenItemSelectAfterDelay());

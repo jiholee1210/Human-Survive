@@ -42,7 +42,6 @@ public class ArtifactSelector : MonoBehaviour
 
     private void SetArtifactSlot(Button button) {
         int randomIndex = Random.Range(0, artifacts.Length);
-        randomIndex = 0;
         Item selectedArtifact = artifacts[randomIndex];
 
         Image image = button.transform.GetChild(0).GetComponent<Image>();
