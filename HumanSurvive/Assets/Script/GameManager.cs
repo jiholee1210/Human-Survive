@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text killCountText;
     [SerializeField] TMP_Text timeText;
     [SerializeField] TMP_Text levelText;
+    [SerializeField] TMP_Text goldText;
     [SerializeField] Slider expBar;
     [SerializeField] GameObject itemSelect;
     [SerializeField] GameObject gameEndObject;
@@ -81,6 +82,11 @@ public class GameManager : MonoBehaviour
         expBar.value = player.GetComponent<PlayerManager>().curExp;
     }
 
+    public void SetGold(int gold) {
+        playerData.gold += gold;
+        goldText.text = playerData.gold.ToString();
+    }
+
     private IEnumerator OpenItemSelectAfterDelay() {
         
         yield return new WaitForSeconds(0.1f);
@@ -135,11 +141,13 @@ public class GameManager : MonoBehaviour
     private void Init() {
         killCount = 0;
         time = 0f;
+        playerData.gold = 0;
 
         SetKillCountText();
         SetTimeText();
         SetLevelText();
         SetExpValue();
+        SetGold(0);
     }
 
     public void GameEnd() {
@@ -164,6 +172,8 @@ public class GameManager : MonoBehaviour
             RectTransform rectTransform = icon.GetComponent<RectTransform>();
             rectTransform.anchoredPosition = new Vector2(-10 * (inventory.Count - 1) + (i * 20), 0);
         }
+        // 골드 획득량 원본 데이터로 넘기기
+        DataManager.Instance.playerData.gold = playerData.gold;
         // 메인메뉴 / 재시작 버튼 활성화
         menuBtn.onClick.AddListener(() => {
             BackToMenu();

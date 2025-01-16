@@ -25,12 +25,10 @@ public class ObjectPoolManager : MonoBehaviour
                 () => CreatePooledItem(currentIndex), OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject
             );
             poolDic.Add(currentIndex, pool);
-            Debug.Log(currentIndex + " 풀 생성");
         }
     }
 
     public GameObject CreatePooledItem(int id) {
-        Debug.Log("CreatePoolItem : " + id);
         GameObject prefab = prefabs[id];
 
         if (prefab != null) {
@@ -41,7 +39,6 @@ public class ObjectPoolManager : MonoBehaviour
                     break;
                 default:
                     poolGo.GetComponent<IWeapon>().pool = poolDic[id];
-                    Debug.Log(id + "번 무기 풀 연결 완료");
                     break;
             }
             return poolGo;

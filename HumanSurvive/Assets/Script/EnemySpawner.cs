@@ -36,10 +36,11 @@ public class EnemySpawner : MonoBehaviour
     private void EnemySpawn() {
         // 시간 별 몬스터 스폰
         // 초 단위 변경부터
-        int bossSpawn = Mathf.FloorToInt(GameManager.Instance.time / 30) < 4 ? Mathf.FloorToInt(GameManager.Instance.time / 30) : 3;
+        int bossSpawn = Mathf.FloorToInt(GameManager.Instance.time / 10) < 5 ? Mathf.FloorToInt(GameManager.Instance.time / 10) : 4;
         int hordeSpawn = Mathf.FloorToInt(GameManager.Instance.time / 10);
         Spawn(enemyData[0]);
         if(bossSpawn == bossSpawnCheck) {
+            Debug.Log(bossSpawn + "보스스폰");
             SpawnBoss(enemyData[bossSpawn]);
             bossSpawnCheck++;
         }

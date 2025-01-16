@@ -177,7 +177,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.625, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -268,7 +268,7 @@ CapsuleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.04}
   m_Size: {x: 1, y: 0.69}
-  m_Direction: 1
+  m_Direction: 0
 --- !u!114 &6619078536908528761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,10 +324,12 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 7518d42498dbf0f4ca40322e38893375, type: 2}
   - {fileID: 9100000, guid: 151e2f93e7c2ab84c8e0b9c4d240c213, type: 2}
   - {fileID: 9100000, guid: f19e8a04ef27ea343bfd6c72c2f50b7c, type: 2}
+  - {fileID: 9100000, guid: c60d552b8862d004e87d5da33340b440, type: 2}
   bulletLayer:
     serializedVersion: 2
     m_Bits: 512
   box: {fileID: 6913692986428533987, guid: 5ea9a20c22465c845a7ebdae1ad6474c, type: 3}
+  coinBag: {fileID: 6814436081102222298, guid: 43fb551451e76db40b1aeffa0e816de7, type: 3}
   damageText: {fileID: 8941590042015461533, guid: 33784ccf7827bf345bf738544a783c41, type: 3}
   isHorde: 0
   isDead: 0

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -12,6 +13,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] RuntimeAnimatorController[] animCon;
     [SerializeField] LayerMask bulletLayer;
     [SerializeField] GameObject box;
+    [SerializeField] GameObject coinBag;
     [SerializeField] GameObject damageText;
 
     private Rigidbody2D rigidbody2D;
@@ -99,7 +101,6 @@ public class EnemyManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (((1 << other.gameObject.layer) & bulletLayer) != 0) {
             IWeapon weapon = other.GetComponent<IWeapon>();
-            Debug.Log("무기 데미지 : " + weapon.GetDamage());
             enemyHealth.OnHit(weapon.GetDamage());
             lastPos = transform.position;
             ShowDamage(lastPos, weapon.GetDamage());
@@ -121,6 +122,10 @@ public class EnemyManager : MonoBehaviour
         Instantiate(box, lastPos, Quaternion.identity);
     }
 
+    private void SpawnBag(Vector3 lastPos) {
+        Instantiate(coinBag, lastPos, Quaternion.identity);
+    }
+
     public void Die() {
         if(isDead) return;
         isDead = true;
@@ -129,6 +134,9 @@ public class EnemyManager : MonoBehaviour
         if(isBoss) {
             SpawnBox(lastPos);
             isBoss = false;
+        }
+        else {
+            if(UnityEngine.Random.Range(0, 100) >= 90) SpawnBag(lastPos);
         }
         pool.Release(gameObject);
     }

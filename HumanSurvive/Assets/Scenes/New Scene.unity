@@ -2518,7 +2518,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData:
     gold: 0
-    stat: 0000000000000000000000000000000000000000000000000000000000000000
+    hp: 1
+    genHp: 1
+    speed: 1
+    finalDamage: 1
+    upgrade: 0000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &861102029
 Transform:
   m_ObjectHideFlags: 0
