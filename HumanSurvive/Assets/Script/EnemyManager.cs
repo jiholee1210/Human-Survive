@@ -23,6 +23,8 @@ public class EnemyManager : MonoBehaviour
     private EnemyMovement enemyMovement;
     private EnemyAttack enemyAttack;
     private EnemyHealth enemyHealth;
+    private IMonster[] ability;
+    
 
     private Transform player;
     private Vector3 lastPos;
@@ -33,6 +35,7 @@ public class EnemyManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        ability = GetComponentsInChildren<IMonster>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         enemyMovement = GetComponent<EnemyMovement>();
