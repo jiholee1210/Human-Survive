@@ -7984,7 +7984,7 @@ MonoBehaviour:
     damage: 20
     speed: 1.2
     colSize: {x: 1.4, y: 2}
-    scale: {x: 2, y: 2}
+    scale: {x: 1, y: 1}
 --- !u!4 &998480865
 Transform:
   m_ObjectHideFlags: 0
@@ -8664,6 +8664,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  bossAttackLayer:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!95 &1176538147
 Animator:
   serializedVersion: 7

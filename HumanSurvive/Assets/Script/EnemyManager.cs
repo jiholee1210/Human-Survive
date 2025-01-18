@@ -35,7 +35,6 @@ public class EnemyManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ability = GetComponentsInChildren<IMonster>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         enemyMovement = GetComponent<EnemyMovement>();
@@ -68,6 +67,11 @@ public class EnemyManager : MonoBehaviour
         transform.position = randomPos;
         enemyMovement.SetHorde(isHorde);
         rigidbody2D.linearVelocity = Vector2.zero;
+        ability = GetComponentsInChildren<IMonster>();
+        foreach (var ability in ability) {
+            Debug.Log("Found artifact: " + ability.GetType().Name);
+        }
+        ability[0].Ability();
     }
 
     public void InitHorde(Vector2 randomPos, EnemyData data) {

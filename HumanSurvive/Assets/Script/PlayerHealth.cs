@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField] float currentHp;
     [SerializeField] float defaultHp;
     [SerializeField] LayerMask enemyLayer;
+    [SerializeField] LayerMask bossAttackLayer;
 
     private PlayerManager playerManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,7 +19,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     }
 
     private void FixedUpdate() {
-        if (currentHp < 0) {
+        if (currentHp <= 0) {
             Die();
         }
     }
