@@ -44,9 +44,9 @@ public class ArtifactSelector : MonoBehaviour
         int randomIndex = Random.Range(0, artifacts.Length);
         Item selectedArtifact = artifacts[randomIndex];
 
-        Image image = button.transform.GetChild(0).GetComponent<Image>();
-        TMP_Text name = button.transform.GetChild(1).GetComponent<TMP_Text>();
-        TMP_Text desc = button.transform.GetChild(2).GetComponent<TMP_Text>();
+        Image image = button.transform.GetChild(1).GetComponent<Image>();
+        TMP_Text name = button.transform.GetChild(2).GetComponent<TMP_Text>();
+        TMP_Text desc = button.transform.GetChild(3).GetComponent<TMP_Text>();
 
         image.sprite = selectedArtifact.itemSprite;
         name.text = selectedArtifact.itemName;

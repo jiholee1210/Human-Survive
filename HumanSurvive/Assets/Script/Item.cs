@@ -60,11 +60,11 @@ public class Item : ScriptableObject
         copy.baseDamage = this.baseDamage;
         copy.finalDamage = this.finalDamage;
         copy.baseCount = this.baseCount + playerData.upgrade[5];
-        copy.speed = this.speed + playerData.upgrade[3];
+        copy.speed = this.speed + (playerData.upgrade[3] * 0.1f);
         copy.dmgUp = (float[])this.dmgUp.Clone();
         copy.countUp = (int[])this.countUp.Clone();
         copy.coolDown = this.coolDown;
-        copy.range = this.range + playerData.upgrade[4];
+        copy.range = this.range + (playerData.upgrade[4] * 0.2f);
         copy.isGuided = this.isGuided;
         return copy;
     }

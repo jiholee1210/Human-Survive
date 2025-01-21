@@ -25,8 +25,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        currentSpeedX = inputValueX * speed * GameManager.Instance.playerData.speed;
-        currentSpeedY = inputValueY * speed * GameManager.Instance.playerData.speed;
+        currentSpeedX = inputValueX * speed * (1 + GameManager.Instance.playerData.speed + (GameManager.Instance.playerData.upgrade[2] * 0.1f));
+        currentSpeedY = inputValueY * speed * (1 + GameManager.Instance.playerData.speed + (GameManager.Instance.playerData.upgrade[2] * 0.1f));
         inputVec = new Vector2(inputValueX, inputValueY);
 
         input = (Mathf.Abs(inputValueX) + Mathf.Abs(inputValueY) >= 1) ? 1 : 0;

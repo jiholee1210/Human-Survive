@@ -36,5 +36,5 @@ MonoBehaviour:
   countUp: 0100000001000000010000000100000001000000
   coolDown: -1
   range: 3
-  speed: 0
+  speed: 1
   isGuided: 0

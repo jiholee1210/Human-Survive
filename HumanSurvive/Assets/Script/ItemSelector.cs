@@ -54,12 +54,12 @@ public class ItemSelector : MonoBehaviour
         // 인벤토리에 아이템이 존재할 때와 처음 획득할 때를 구분해서 레벨업 기능 구현해야 함.
         Item selectedItem = items[randomIndex];
 
-        Image image = button.transform.GetChild(0).GetComponent<Image>();
-        TMP_Text name = button.transform.GetChild(1).GetComponent<TMP_Text>();
-        TMP_Text type = button.transform.GetChild(2).GetComponent<TMP_Text>();
-        TMP_Text dmg = button.transform.GetChild(3).GetComponent<TMP_Text>();
-        TMP_Text cool = button.transform.GetChild(4).GetComponent<TMP_Text>();
-        TMP_Text level = button.transform.GetChild(5).GetComponent<TMP_Text>();
+        Image image = button.transform.GetChild(1).GetComponent<Image>();
+        TMP_Text name = button.transform.GetChild(2).GetComponent<TMP_Text>();
+        TMP_Text type = button.transform.GetChild(3).GetComponent<TMP_Text>();
+        TMP_Text dmg = button.transform.GetChild(4).GetComponent<TMP_Text>();
+        TMP_Text cool = button.transform.GetChild(5).GetComponent<TMP_Text>();
+        TMP_Text level = button.transform.GetChild(6).GetComponent<TMP_Text>();
 
         image.sprite = selectedItem.itemSprite;
         name.text = selectedItem.itemName;

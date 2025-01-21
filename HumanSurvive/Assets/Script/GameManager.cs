@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public bool canClick;
     public bool isOpen;
 
+    private int gold;
+
     [SerializeField] public PlayerData playerData;
 
     private void Awake() {
@@ -82,9 +84,9 @@ public class GameManager : MonoBehaviour
         expBar.value = player.GetComponent<PlayerManager>().curExp;
     }
 
-    public void SetGold(int gold) {
-        playerData.gold += gold;
-        goldText.text = playerData.gold.ToString();
+    public void SetGold(int getGold) {
+        gold += (int)(getGold * (1 + playerData.upgrade[7] * 0.1f));
+        goldText.text = gold.ToString();
     }
 
     private IEnumerator OpenItemSelectAfterDelay() {
@@ -141,7 +143,7 @@ public class GameManager : MonoBehaviour
     private void Init() {
         killCount = 0;
         time = 0f;
-        playerData.gold = 0;
+        gold = 0;
 
         SetKillCountText();
         SetTimeText();
@@ -173,7 +175,7 @@ public class GameManager : MonoBehaviour
             rectTransform.anchoredPosition = new Vector2(-10 * (inventory.Count - 1) + (i * 20), 0);
         }
         // 골드 획득량 원본 데이터로 넘기기
-        DataManager.Instance.playerData.gold = playerData.gold;
+        DataManager.Instance.playerData.gold += gold;
         // 메인메뉴 / 재시작 버튼 활성화
         menuBtn.onClick.AddListener(() => {
             BackToMenu();

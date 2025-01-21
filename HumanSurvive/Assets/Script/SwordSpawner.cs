@@ -48,7 +48,7 @@ public class SwordSpawner : MonoBehaviour, ISpawner
         Quaternion startRotation = transform.rotation;
         Quaternion targetRotation = startRotation * Quaternion.Euler(0, 0, 90f * dir);
 
-        float duration = 0.2f;
+        float duration = 0.2f * (1 - GameManager.Instance.playerData.attackSpeed);
         float curTime = 0f;
 
         while(curTime < duration) {

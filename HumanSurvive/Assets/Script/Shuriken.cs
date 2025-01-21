@@ -27,11 +27,11 @@ public class Shuriken : MonoBehaviour, IWeapon
     }
 
     public void Attack() {
-        rigidbody2D.MovePositionAndRotation(rigidbody2D.position + (dir * item.speed * Time.deltaTime), rotation);
+        rigidbody2D.MovePositionAndRotation(rigidbody2D.position + (dir * item.speed * (1 + GameManager.Instance.playerData.attackSpeed) * Time.deltaTime), rotation);
     }
 
     public float GetDamage() {
-        return item.baseDamage * GameManager.Instance.playerData.finalDamage;
+        return item.baseDamage * (1 + GameManager.Instance.playerData.finalDamage);
     }
 
     public void Init(Item mItem) {

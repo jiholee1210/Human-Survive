@@ -42,7 +42,7 @@ public class EnergySpawner : MonoBehaviour, ISpawner
 
     private IEnumerator Rotate() {
         while(true) {
-            transform.Rotate(Vector3.back * speed * Time.deltaTime);
+            transform.Rotate(Vector3.back * speed * item.speed * (1 + GameManager.Instance.playerData.attackSpeed) * Time.deltaTime);
             yield return null;
         }
     }

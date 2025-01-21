@@ -45,6 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spearObject: {fileID: 4886119187267882727, guid: 5780f7b2865afa44ba031800d7aadea1, type: 3}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  scanRange: 10
 --- !u!1 &7224107642227798689
 GameObject:
   m_ObjectHideFlags: 0

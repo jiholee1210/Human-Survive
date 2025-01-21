@@ -8,7 +8,7 @@ public class Cycle : MonoBehaviour, IWeapon
 
     public float GetDamage()
     {
-        return item.baseDamage * GameManager.Instance.playerData.finalDamage;
+        return item.baseDamage * (1 + GameManager.Instance.playerData.finalDamage);
     }
 
     public void Attack()

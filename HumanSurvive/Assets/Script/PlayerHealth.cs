@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        defaultHp = 100f * GameManager.Instance.playerData.hp;
+        defaultHp = 100f * (1 + GameManager.Instance.playerData.hp + (GameManager.Instance.playerData.upgrade[0] * 0.1f));
         maxHp = defaultHp;
         currentHp = defaultHp;
         playerManager = GetComponent<PlayerManager>();
@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     }
 
     public void SetMaxHp() {
-        maxHp = defaultHp * GameManager.Instance.playerData.hp;
+        maxHp = defaultHp * (1 + GameManager.Instance.playerData.hp);
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     public int GetExp(float exp) {
-        curExp += exp;
+        curExp += exp * (1 + GameManager.Instance.playerData.upgrade[6] * 0.1f);
         if(curExp >= maxExp) {
             curExp -= maxExp;
             LevelUp();
