@@ -28,7 +28,7 @@ public class PlayerManager : MonoBehaviour
     public void Init() {
         level = 1;
         curExp = 0;
-        maxExp = 10;
+        maxExp = 40;
     }
 
     public void Die() {
