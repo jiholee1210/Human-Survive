@@ -8120,40 +8120,139 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData:
   - id: 0
-    spawnTime: 0.7
+    name: "\uBC15\uC950"
     health: 10
-    damage: 10
+    damage: 5
     speed: 2
     colSize: {x: 0.8, y: 0.1}
     scale: {x: 1, y: 1}
   - id: 1
-    spawnTime: -1
-    health: 30
-    damage: 20
-    speed: 1.2
-    colSize: {x: 1.1, y: 1.1}
-    scale: {x: 2, y: 2}
+    name: "\uBC40"
+    health: 7
+    damage: 15
+    speed: 3
+    colSize: {x: 1.3, y: 1.3}
+    scale: {x: 1, y: 1}
   - id: 2
-    spawnTime: -1
+    name: "\uB9AC\uC790\uB4DC"
+    health: 20
+    damage: 10
+    speed: 1.5
+    colSize: {x: 1.2, y: 1.2}
+    scale: {x: 1, y: 1}
+  - id: 3
+    name: "\uC804\uAC08"
+    health: 30
+    damage: 15
+    speed: 2
+    colSize: {x: 1.2, y: 1.2}
+    scale: {x: 1, y: 1}
+  - id: 4
+    name: "\uC120\uC778\uC7A5"
     health: 50
     damage: 20
-    speed: 1.2
-    colSize: {x: 1.1, y: 1}
-    scale: {x: 2, y: 2}
-  - id: 3
-    spawnTime: -1
+    speed: 1.5
+    colSize: {x: 1.2, y: 1.2}
+    scale: {x: 1, y: 1}
+  - id: 5
+    name: "\uBB3C\uC815\uB839"
+    health: 70
+    damage: 30
+    speed: 2
+    colSize: {x: 1.1, y: 1.1}
+    scale: {x: 1, y: 1}
+  - id: 6
+    name: "\uAC70\uBD81\uB9E8"
     health: 100
-    damage: 20
-    speed: 1.2
-    colSize: {x: 1, y: 1.2}
-    scale: {x: 2, y: 2}
-  - id: 4
-    spawnTime: -1
-    health: 200
-    damage: 20
-    speed: 1.2
+    damage: 25
+    speed: 1.5
+    colSize: {x: 1.2, y: 1.2}
+    scale: {x: 1, y: 1}
+  - id: 7
+    name: "\uD0D5\uAD6C\uB9AC"
+    health: 100
+    damage: 25
+    speed: 1.5
     colSize: {x: 1.4, y: 2}
     scale: {x: 1, y: 1}
+  bossData:
+  - id: 0
+    name: "\uB300\uD615 \uBC15\uC950"
+    health: 30
+    damage: 10
+    speed: 1.5
+    colSize: {x: 1, y: 1}
+    scale: {x: 2, y: 2}
+  - id: 1
+    name: "\uB300\uD615 \uB9AC\uC790\uB4DC"
+    health: 70
+    damage: 15
+    speed: 1.5
+    colSize: {x: 1.2, y: 1.2}
+    scale: {x: 2, y: 2}
+  - id: 2
+    name: "\uC2A4\uCEEC"
+    health: 100
+    damage: 20
+    speed: 2
+    colSize: {x: 1.2, y: 1.2}
+    scale: {x: 2, y: 2}
+  - id: 3
+    name: "\uB300\uD615 \uC120\uC778\uC7A5"
+    health: 150
+    damage: 30
+    speed: 2
+    colSize: {x: 1.2, y: 1.2}
+    scale: {x: 2, y: 2}
+  - id: 4
+    name: "\uB300\uD615 \uC804\uAC08"
+    health: 70
+    damage: 50
+    speed: 3.5
+    colSize: {x: 1.2, y: 1.2}
+    scale: {x: 2, y: 2}
+  - id: 5
+    name: "\uD2B8\uB864"
+    health: 200
+    damage: 70
+    speed: 2.5
+    colSize: {x: 1.2, y: 1.2}
+    scale: {x: 2, y: 2}
+  - id: 6
+    name: "\uB300\uD615 \uAC70\uBD81\uB9E8"
+    health: 400
+    damage: 40
+    speed: 2
+    colSize: {x: 1.2, y: 1.2}
+    scale: {x: 2, y: 2}
+  - id: 7
+    name: "\uC545\uB9C8\uC804\uC0AC"
+    health: 500
+    damage: 80
+    speed: 3.5
+    colSize: {x: 1, y: 1}
+    scale: {x: 2, y: 2}
+  - id: 8
+    name: "\uB300\uD615 \uBB3C\uC815\uB839"
+    health: 400
+    damage: 100
+    speed: 4
+    colSize: {x: 1.1, y: 1.1}
+    scale: {x: 2, y: 2}
+  - id: 9
+    name: "\uB300\uD615 \uD0D5\uAD6C\uB9AC"
+    health: 0
+    damage: 0
+    speed: 0
+    colSize: {x: 0, y: 0}
+    scale: {x: 0, y: 0}
+  - id: 10
+    name: "\uB3C4\uD50C\uAC31\uC5B4"
+    health: 0
+    damage: 0
+    speed: 0
+    colSize: {x: 0, y: 0}
+    scale: {x: 0, y: 0}
 --- !u!4 &998480865
 Transform:
   m_ObjectHideFlags: 0

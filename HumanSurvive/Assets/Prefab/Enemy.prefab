@@ -227,7 +227,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.625, y: 2}
+  m_Size: {x: 0.8125, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -317,7 +317,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.04}
-  m_Size: {x: 1, y: 0.69}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!114 &6619078536908528761
 MonoBehaviour:
@@ -371,10 +371,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animCon:
   - {fileID: 9100000, guid: 993e090e02c7b164fbca4bc2f7feb5bc, type: 2}
+  - {fileID: 9100000, guid: 5858a3715cbbb3641b9ab326921ae963, type: 2}
+  - {fileID: 9100000, guid: 7518d42498dbf0f4ca40322e38893375, type: 2}
+  - {fileID: 9100000, guid: 1f0e64dd6a420a44e87b58cac70d6279, type: 2}
+  - {fileID: 9100000, guid: bc1ebb7b574f7fe4fb988c14f4d6f5c2, type: 2}
+  - {fileID: 9100000, guid: 02d0a112d5fca064a814bac3f325eeaa, type: 2}
+  - {fileID: 9100000, guid: c71877e805ad7814c919183aa4ee36e2, type: 2}
+  - {fileID: 9100000, guid: f19e8a04ef27ea343bfd6c72c2f50b7c, type: 2}
+  bossAnimCon:
+  - {fileID: 9100000, guid: 993e090e02c7b164fbca4bc2f7feb5bc, type: 2}
   - {fileID: 9100000, guid: 7518d42498dbf0f4ca40322e38893375, type: 2}
   - {fileID: 9100000, guid: 151e2f93e7c2ab84c8e0b9c4d240c213, type: 2}
+  - {fileID: 9100000, guid: bc1ebb7b574f7fe4fb988c14f4d6f5c2, type: 2}
+  - {fileID: 9100000, guid: 1f0e64dd6a420a44e87b58cac70d6279, type: 2}
   - {fileID: 9100000, guid: f19e8a04ef27ea343bfd6c72c2f50b7c, type: 2}
+  - {fileID: 9100000, guid: c71877e805ad7814c919183aa4ee36e2, type: 2}
   - {fileID: 9100000, guid: c60d552b8862d004e87d5da33340b440, type: 2}
+  - {fileID: 9100000, guid: 02d0a112d5fca064a814bac3f325eeaa, type: 2}
   bulletLayer:
     serializedVersion: 2
     m_Bits: 512

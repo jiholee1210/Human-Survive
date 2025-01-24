@@ -11,6 +11,7 @@ public class EnemyManager : MonoBehaviour
     public IObjectPool<GameObject> pool {get; set;}
 
     [SerializeField] RuntimeAnimatorController[] animCon;
+    [SerializeField] RuntimeAnimatorController[] bossAnimCon;
     [SerializeField] LayerMask bulletLayer;
     [SerializeField] GameObject box;
     [SerializeField] GameObject coinBag;
@@ -60,18 +61,18 @@ public class EnemyManager : MonoBehaviour
     }
 
     public void InitBoss(Vector2 randomPos, EnemyData data) {
+        isBoss = true;
         Debug.Log(data.id + " enemyBoss");
         SetEnemy(data);
-        isBoss = true;
         isDead = false;
         transform.position = randomPos;
         enemyMovement.SetHorde(isHorde);
         rigidbody2D.linearVelocity = Vector2.zero;
         ability = GetComponentsInChildren<IMonster>();
         foreach (var ability in ability) {
-            Debug.Log("Found artifact: " + ability.GetType().Name);
+            Debug.Log("Found ability : " + ability.GetType().Name);
         }
-        ability[0].Ability();
+        //ability[0].Ability();
     }
 
     public void InitHorde(Vector2 randomPos, EnemyData data) {
@@ -86,7 +87,7 @@ public class EnemyManager : MonoBehaviour
     }
 
     private void SetEnemy(EnemyData data) {
-        animator.runtimeAnimatorController = animCon[data.id];
+        animator.runtimeAnimatorController = isBoss ? bossAnimCon[data.id] : animCon[data.id];
         enemyMovement.SetPlayer(player);
         enemyMovement.SetSpeed(data.speed);
         enemyAttack.SetDamage(data.damage);
