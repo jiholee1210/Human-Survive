@@ -8169,11 +8169,11 @@ MonoBehaviour:
     colSize: {x: 1.2, y: 1.2}
     scale: {x: 1, y: 1}
   - id: 7
-    name: "\uD0D5\uAD6C\uB9AC"
-    health: 100
-    damage: 25
-    speed: 1.5
-    colSize: {x: 1.4, y: 2}
+    name: "\uBAA8\uB798\uD3ED\uD48D"
+    health: 150
+    damage: 20
+    speed: 2
+    colSize: {x: 1.2, y: 1.2}
     scale: {x: 1, y: 1}
   bossData:
   - id: 0
@@ -8229,23 +8229,23 @@ MonoBehaviour:
     name: "\uC545\uB9C8\uC804\uC0AC"
     health: 500
     damage: 80
-    speed: 3.5
+    speed: 3
     colSize: {x: 1, y: 1}
     scale: {x: 2, y: 2}
   - id: 8
     name: "\uB300\uD615 \uBB3C\uC815\uB839"
     health: 400
     damage: 100
-    speed: 4
+    speed: 3
     colSize: {x: 1.1, y: 1.1}
     scale: {x: 2, y: 2}
   - id: 9
-    name: "\uB300\uD615 \uD0D5\uAD6C\uB9AC"
-    health: 0
-    damage: 0
-    speed: 0
-    colSize: {x: 0, y: 0}
-    scale: {x: 0, y: 0}
+    name: "\uB300\uD615 \uBAA8\uB798\uD3ED\uD48D"
+    health: 500
+    damage: 110
+    speed: 3
+    colSize: {x: 1.2, y: 1.2}
+    scale: {x: 2, y: 2}
   - id: 10
     name: "\uB3C4\uD50C\uAC31\uC5B4"
     health: 0

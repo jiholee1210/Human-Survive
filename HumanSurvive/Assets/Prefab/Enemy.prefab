@@ -147,13 +147,13 @@ GameObject:
   - component: {fileID: 8668503792521361540}
   - component: {fileID: 7304774802339912958}
   - component: {fileID: 7265048451005067157}
-  - component: {fileID: 2144780773186773973}
   - component: {fileID: 2006722663368499016}
   - component: {fileID: 6619078536908528761}
   - component: {fileID: 8479639302982192806}
   - component: {fileID: 6623344367555275788}
   - component: {fileID: 2727638991138302934}
   - component: {fileID: 8930255138925311942}
+  - component: {fileID: -803103701748266399}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -227,7 +227,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8125, y: 1}
+  m_Size: {x: 1.1875, y: 1.1875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -260,28 +260,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &2144780773186773973
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7548389328864159688}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 993e090e02c7b164fbca4bc2f7feb5bc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!70 &2006722663368499016
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -317,7 +295,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.04}
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2, y: 1.2}
   m_Direction: 0
 --- !u!114 &6619078536908528761
 MonoBehaviour:
@@ -378,6 +356,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 02d0a112d5fca064a814bac3f325eeaa, type: 2}
   - {fileID: 9100000, guid: c71877e805ad7814c919183aa4ee36e2, type: 2}
   - {fileID: 9100000, guid: f19e8a04ef27ea343bfd6c72c2f50b7c, type: 2}
+  - {fileID: 9100000, guid: d4e3b453fa1c8774a9b82bf16d45472f, type: 2}
   bossAnimCon:
   - {fileID: 9100000, guid: 993e090e02c7b164fbca4bc2f7feb5bc, type: 2}
   - {fileID: 9100000, guid: 7518d42498dbf0f4ca40322e38893375, type: 2}
@@ -388,6 +367,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: c71877e805ad7814c919183aa4ee36e2, type: 2}
   - {fileID: 9100000, guid: c60d552b8862d004e87d5da33340b440, type: 2}
   - {fileID: 9100000, guid: 02d0a112d5fca064a814bac3f325eeaa, type: 2}
+  - {fileID: 9100000, guid: d4e3b453fa1c8774a9b82bf16d45472f, type: 2}
   bulletLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -412,3 +392,25 @@ MonoBehaviour:
   colLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!95 &-803103701748266399
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7548389328864159688}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
