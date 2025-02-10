@@ -10,9 +10,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button endBtn;
     [SerializeField] Button upgradeBtn;
     [SerializeField] Button exitBtn;
+    [SerializeField] Button resetBtn;
     [SerializeField] Button[] upBtn;
-    [SerializeField] Button[] downBtn;
-    [SerializeField] TMP_Text[] stats;
+    [SerializeField] GameObject[] upgradeSlot;
     [SerializeField] TMP_Text gold;
     [SerializeField] TMP_Text[] reqGold;
 
@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
         });
         upgradeBtn.onClick.AddListener(() => {
             upgradePanel.SetActive(true);
-            SetUpgradeStat();
+            SetSlot();
             SetGoldText();
             for (int i = 0; i < reqGold.Length; i++) {
                 SetReqGold(i, (int)(10 * Math.Pow(2, playerData.upgrade[i])));
@@ -42,6 +42,9 @@ public class UIManager : MonoBehaviour
         });
         exitBtn.onClick.AddListener(() => {
             upgradePanel.SetActive(false);
+        });
+        resetBtn.onClick.AddListener(() => {
+            Reset();
         });
         for(int i = 0; i < upBtn.Length; i++) {
             int index = i;
@@ -54,36 +57,37 @@ public class UIManager : MonoBehaviour
                 Debug.Log(index + "번째 업그레이드 클릭 : " + playerData.upgrade[index]);
                 playerData.gold -= (int)(10 * Math.Pow(2, playerData.upgrade[index]));
                 SetGoldText();
+                upgradeSlot[index].transform.GetChild(playerData.upgrade[index]).GetChild(0).gameObject.SetActive(true);
                 playerData.upgrade[index]++;
                 SetReqGold(index, (int)(10 * Math.Pow(2, playerData.upgrade[index])));
-                stats[index].text = playerData.upgrade[index].ToString();
-                DataManager.Instance.SavePlayerData();
-            });
-        }
-        for(int i = 0; i < downBtn.Length; i++) {
-            int index = i;
-            downBtn[index].onClick.AddListener(() => {
-                if(playerData.upgrade[index] <= 0) {
-                    Debug.Log("현재 0레벨 입니다.");
-                    return;
-                }
-                Debug.Log(index);
-                Debug.Log(index + "번째 업그레이드 클릭 : " + playerData.upgrade[index]);
-                playerData.upgrade[index]--;
-                playerData.gold += (int)(10 * Math.Pow(2, playerData.upgrade[index]));
-                SetGoldText();
-                SetReqGold(index, (int)(10 * Math.Pow(2, playerData.upgrade[index])));
-                stats[index].text = playerData.upgrade[index].ToString();
                 DataManager.Instance.SavePlayerData();
             });
         }
     }
 
-    private void SetUpgradeStat() {
-        for(int i = 0; i < stats.Length; i++) {
-            int index = i;
-            stats[index].text = playerData.upgrade[index].ToString();
+    private void SetSlot() {
+        for(int i = 0; i < upgradeSlot.Length; i++) {
+            for(int j = 0; j < playerData.upgrade[i]; j++) {
+                upgradeSlot[i].transform.GetChild(j).GetChild(0).gameObject.SetActive(true);
+            }
         }
+    }
+
+    private void Reset() {
+        for(int i = 0; i < upgradeSlot.Length; i++) {
+            for(int j = 0; j < playerData.upgrade[i]; j++) {
+                // 업그레이드 슬롯 초기화
+                upgradeSlot[i].transform.GetChild(j).GetChild(0).gameObject.SetActive(false);
+                // 골드 돌려받기
+                playerData.gold += (int)(10 * Math.Pow(2, j));
+            }
+            // 업그레이드 취소
+            playerData.upgrade[i] = 0;
+            // 필요 골드 텍스트 초기화
+            SetReqGold(i, 10);
+        }
+        SetGoldText();
+        DataManager.Instance.SavePlayerData();
     }
     
     private void SetGoldText() {
