@@ -17,9 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Slider expBar;
     [SerializeField] GameObject itemSelect;
     [SerializeField] GameObject gameEndObject;
+    [SerializeField] GameObject gameClearObject;
     [SerializeField] GameObject itemIconPrefab;
-    [SerializeField] Button menuBtn;
-    [SerializeField] Button restartBtn;
     [SerializeField] GameObject artifactSelect;
 
     public int killCount;
@@ -163,7 +162,7 @@ public class GameManager : MonoBehaviour
         TMP_Text record = gameEndObject.transform.GetChild(1).GetComponent<TMP_Text>();
         int min = Mathf.FloorToInt(time / 60);
         int sec = Mathf.FloorToInt(time % 60);
-        record.text = string.Format("{0:D2}:{1:D2}", min, sec);
+        record.text = string.Format("기록 {0:D2}:{1:D2}", min, sec);
         // 소지중인 아이템 나열
         List<Item> inventory = player.GetComponent<PlayerInventory>().GetWeapons();
         for(int i = 0; i < inventory.Count; i++) {
@@ -177,10 +176,33 @@ public class GameManager : MonoBehaviour
         // 골드 획득량 원본 데이터로 넘기기
         DataManager.Instance.playerData.gold += gold;
         // 메인메뉴 / 재시작 버튼 활성화
-        menuBtn.onClick.AddListener(() => {
+        gameEndObject.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => {
             BackToMenu();
         });
-        restartBtn.onClick.AddListener(() => {
+        gameEndObject.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(() => {
+            Restart();
+        });
+    }
+
+    private void ShowClearUI() {
+        gameClearObject.SetActive(true);
+
+        TMP_Text record = gameClearObject.transform.GetChild(1).GetComponent<TMP_Text>();
+        record.text = string.Format("기록 20:00");
+        List<Item> inventory = player.GetComponent<PlayerInventory>().GetWeapons();
+        for(int i = 0; i < inventory.Count; i++) {
+            GameObject icon = Instantiate(itemIconPrefab, gameClearObject.transform);
+            ItemIcon itemIcon = icon.GetComponent<ItemIcon>();
+            itemIcon.item = inventory[i];
+
+            RectTransform rectTransform = icon.GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = new Vector2(-10 * (inventory.Count - 1) + (i * 20), 0);
+        }
+        DataManager.Instance.playerData.gold += gold;
+        gameClearObject.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => {
+            BackToMenu();
+        });
+        gameClearObject.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(() => {
             Restart();
         });
     }

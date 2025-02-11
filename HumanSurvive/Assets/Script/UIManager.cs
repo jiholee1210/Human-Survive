@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject upgradePanel;
 
     private PlayerData playerData;
+    private int[] upgrade = {5, 3, 3, 5, 5, 2, 3, 2};
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,6 +52,10 @@ public class UIManager : MonoBehaviour
             upBtn[index].onClick.AddListener(() => {
                 if(playerData.gold < (int)(10 * Math.Pow(2, playerData.upgrade[index]))) {
                     Debug.Log("골드가 부족합니다.");
+                    return;
+                }
+                if(playerData.upgrade[index] >= upgrade[index]) {
+                    Debug.Log("최대 레벨입니다.");
                     return;
                 }
                 Debug.Log(index);

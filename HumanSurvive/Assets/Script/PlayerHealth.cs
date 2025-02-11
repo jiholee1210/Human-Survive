@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
@@ -7,6 +9,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField] float defaultHp;
     [SerializeField] LayerMask enemyLayer;
     [SerializeField] LayerMask bossAttackLayer;
+    [SerializeField] Slider HpBar;
 
     private PlayerManager playerManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,11 +19,18 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         maxHp = defaultHp;
         currentHp = defaultHp;
         playerManager = GetComponent<PlayerManager>();
+        StartCoroutine(RegenHp());
     }
 
     private void FixedUpdate() {
         if (currentHp <= 0) {
             Die();
+        }
+
+        if (HpBar != null) {
+               HpBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 0.8f, 0));
+        } else {
+            Debug.LogError("HpBar가 null입니다!");
         }
     }
     // Update is called once per frame
@@ -43,12 +53,26 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void OnHit(float damage)
     {
         currentHp -= damage;
+        HpBar.value = currentHp / maxHp;
         Debug.Log("" + currentHp);
     }
 
     public void RestoreHp(float heal)
     {
         currentHp += heal;
+        HpBar.value = currentHp / maxHp;
+    }
+
+    public IEnumerator RegenHp() {
+        while(true) {
+            if(currentHp < maxHp) {
+                currentHp += GameManager.Instance.playerData.genHp + (GameManager.Instance.playerData.upgrade[1] * 0.1f);
+                Debug.Log("체력 리젠" + currentHp);
+                currentHp = Mathf.Min(currentHp, maxHp);
+                HpBar.value = currentHp / maxHp;
+            }
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     public void Die()
