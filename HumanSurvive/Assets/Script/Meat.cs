@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CoinBag : MonoBehaviour, IDrop
+public class Meat : MonoBehaviour, IDrop
 {
     [SerializeField] LayerMask playerLayer;
     [SerializeField] Transform player;
@@ -26,7 +26,7 @@ public class CoinBag : MonoBehaviour, IDrop
     private void OnTriggerEnter2D(Collider2D other) {
         if (((1 << other.gameObject.layer) & playerLayer) != 0) {
             // 플레이어와 충돌했을 때의 처리
-            GameManager.Instance.SetGold(10);
+            GameManager.Instance.player.GetComponent<PlayerHealth>().RestoreHp(10f);
             Destroy(gameObject);
         }
     }

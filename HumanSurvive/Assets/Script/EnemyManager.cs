@@ -15,6 +15,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] LayerMask bulletLayer;
     [SerializeField] GameObject box;
     [SerializeField] GameObject coinBag;
+    [SerializeField] GameObject meat;
     [SerializeField] GameObject damageText;
 
     private Rigidbody2D rigidbody2D;
@@ -134,6 +135,10 @@ public class EnemyManager : MonoBehaviour
         Instantiate(coinBag, lastPos, Quaternion.identity);
     }
 
+    private void SpawnMeat(Vector3 lastPos) {
+        Instantiate(meat, lastPos, Quaternion.identity);
+    }
+
     public void Die() {
         if(isDead) return;
         isDead = true;
@@ -144,7 +149,10 @@ public class EnemyManager : MonoBehaviour
             isBoss = false;
         }
         else {
-            if(UnityEngine.Random.Range(0, 100) >= 90) SpawnBag(lastPos);
+            int random = UnityEngine.Random.Range(0, 100);
+            
+            if(random >= 90) SpawnBag(lastPos);
+            else if(random >= 80) SpawnMeat(lastPos);
         }
         pool.Release(gameObject);
     }

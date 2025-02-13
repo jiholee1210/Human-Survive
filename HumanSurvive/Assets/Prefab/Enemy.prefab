@@ -373,6 +373,7 @@ MonoBehaviour:
     m_Bits: 512
   box: {fileID: 6913692986428533987, guid: 5ea9a20c22465c845a7ebdae1ad6474c, type: 3}
   coinBag: {fileID: 6814436081102222298, guid: 43fb551451e76db40b1aeffa0e816de7, type: 3}
+  meat: {fileID: 8034403022022348048, guid: b20d0b5824875db42954dfe12505f25b, type: 3}
   damageText: {fileID: 8941590042015461533, guid: 33784ccf7827bf345bf738544a783c41, type: 3}
   isHorde: 0
   isDead: 0
